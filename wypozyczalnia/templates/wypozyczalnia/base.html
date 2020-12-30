@@ -38,8 +38,7 @@
                                 <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
                                 <a class="nav-item nav-link" href="{% url 'register' %}">Register</a> {% endif %} {%if request.user.is_manager %}
                                 <a class="nav-item nav-link" href="{% url 'registerEmployee' %}">Create employee</a> {% endif %} {%if request.user.is_staff %}
-                                <a class="nav-item nav-link" href="{% url 'register' %}">Add new car</a> {% endif %}
-
+                                <a class="nav-item nav-link" href="{% url 'register' %}">Dodaj samochód</a> {% endif %}
                             </div>
                         </div>
                     </div>
