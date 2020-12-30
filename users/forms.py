@@ -12,5 +12,16 @@ class UserRegisterForm(UserCreationForm):
         fields = ['first_name','last_name','phone', 'email','driving_license', 'password1', 'password2',]
 
 
+class EmployeeRegisterForm(UserCreationForm):
+    email = forms.EmailField()
+    phone = PhoneNumberField()
+    class Meta:
+        model = Account
+        fields = ['first_name','last_name', 'username','phone', 'email','is_staff', 'password1', 'password2',]
 
-
+class ManagerRegisterForm(UserCreationForm):
+    email = forms.EmailField()
+    phone = PhoneNumberField()  
+    class Meta:
+        model = Account
+        fields = ['first_name','last_name', 'username','phone', 'email','is_staff','password1', 'password2',]
