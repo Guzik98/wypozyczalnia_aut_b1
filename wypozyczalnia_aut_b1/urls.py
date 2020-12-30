@@ -37,4 +37,9 @@ path('password-reset-complete/',
              template_name='users/password_reset_complete.html'
          ),
          name='password_reset_complete'),
+
+    path('password/', auth_views.PasswordResetView.as_view(template_name='users/password_reset.html'),
+         name="password"),
+    path('edit_account_redirect/', user_views.edit_account_redirect, name='edit_account_redirect'),
+
 ]

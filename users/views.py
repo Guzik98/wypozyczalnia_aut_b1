@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
-from .forms import UserRegisterForm, EmployeeRegisterForm
+from .forms import UserRegisterForm, EmployeeRegisterForm, UserUpdateForm
 
 
 def register(request):
@@ -27,3 +27,16 @@ def registerEmployee(request):
     else:
         form = EmployeeRegisterForm()
     return render(request, 'users/register.html',{'form':form})
+
+def edit_account_redirect(request):
+    if request.method == 'POST':
+        edit_form = UserUpdateForm(request.POST,instance=request.user)
+        if edit_form.is_valid() :
+            edit_form.save()
+            messages.success(request,'Zmieniłeś dane konta!')
+            return redirect('wypozyczalnia-home')
+    else:
+        edit_form = UserUpdateForm(instance=request.user)
+
+    context={'edit_form': edit_form}
+    return render(request, 'users/edit_account.html',context )
