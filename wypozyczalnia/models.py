@@ -7,6 +7,9 @@ class FuelType(models.Model):
     class Meta:
         db_table = 'fuel_type'
 
+    def publish(self):
+        self.save()
+
     def __str__(self):
         return self.name
 
@@ -20,6 +23,9 @@ class Engine(models.Model):
     class Meta:
         db_table = 'engine'
 
+    def publish(self):
+        self.save()
+
     def __str__(self):
         return f'{self.name} | {self.power} KS - {self.consumation} l '
 
@@ -30,6 +36,9 @@ class Model(models.Model):
     class Meta:
         db_table = 'model'
 
+    def publish(self):
+        self.save()
+
     def __str__(self):
         return self.name
 
@@ -39,6 +48,9 @@ class AditionalEquipment(models.Model):
 
     class Meta:
         db_table = 'aditional_equipment'
+
+    def publish(self):
+        self.save()
 
     def __str__(self):
         return self.name
@@ -60,9 +72,14 @@ class Car(models.Model):
         db_table = 'car'
         ordering = ('model',)
 
+    def publish(self):
+        self.save()
+
     def __str__(self):
         return f'{self.model.name} {self.nazwa} | {self.silnik.name} - {self.rok_produkcji} | ' \
-               f'{self.cena_za_godzine}zl - ' + 'Dostępny' if self.dostepnosc else 'Niedostępny'
+               f'{self.cena_za_godzine}zl - ' + 'Dostępny' if self.dostepnosc else 'Niedostępny' 
+
+                
 
 
 class Gallery(models.Model):
@@ -72,5 +89,9 @@ class Gallery(models.Model):
     class Meta:
         db_table = 'gallery'
 
+    def publish(self):
+        self.save()
+
     def __str__(self):
-        return self.car.name
+        return f'Marka {self.car.nazwa} Silnik: {self.car.silnik.name} Rok produkcji: {self.car.rok_produkcji}' \
+               f' Cena: {self.car.cena_za_godzine}zl - ' + 'Dostępny' if self.car.dostepnosc else 'Niedostępny' 

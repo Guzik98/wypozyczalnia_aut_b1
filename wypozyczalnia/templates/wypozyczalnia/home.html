@@ -1,4 +1,15 @@
 {%extends 'wypozyczalnia/base.html'%}
 {% block content %}
-
+<div class="content-section">
+{% for gallery in gallerys %}
+<div class="column" >  
+    <figure> 
+        <img src = "{{ gallery.photo.url }}" class="img-fluid" alt="Responsive image" width="300" height="400">
+        <figcaption>
+            {{ gallery }}
+        </figcaption>
+    </figure>
+</div>
+{% endfor %}
+</div>
 {%endblock content%}
