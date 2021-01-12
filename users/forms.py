@@ -9,7 +9,7 @@ class UserRegisterForm(UserCreationForm):
     driving_license = forms.DateField()
     class Meta:
         model = Account
-        fields = ['first_name','last_name','phone', 'email','driving_license', 'password1', 'password2',]
+        fields = ['username','first_name','last_name','phone', 'email','driving_license', 'password1', 'password2',]
 
 
 class EmployeeRegisterForm(UserCreationForm):
