@@ -67,6 +67,8 @@ class Car(models.Model):
     model = models.ForeignKey(Model, on_delete=models.CASCADE, related_name='cars', null=True)
     silnik = models.ForeignKey(Engine, on_delete=models.CASCADE, related_name='cars', null=True)
     opcjonalne_wyposazenie = models.ManyToManyField(AditionalEquipment, related_name='cars')
+    photo = models.ImageField(upload_to='cars/%Y/%m/%d', default='no_image.png')
+
 
     class Meta:
         db_table = 'car'
@@ -81,7 +83,7 @@ class Car(models.Model):
 
                 
 
-
+"""
 class Gallery(models.Model):
     photo = models.ImageField(upload_to='cars/%Y/%m/%d')
     car = models.ForeignKey(Car, on_delete=models.CASCADE, related_name='photos')
@@ -95,3 +97,4 @@ class Gallery(models.Model):
     def __str__(self):
         return f'Marka {self.car.nazwa} Silnik: {self.car.silnik.name} Rok produkcji: {self.car.rok_produkcji}' \
                f' Cena: {self.car.cena_za_godzine}zl - ' + 'Dostępny' if self.car.dostepnosc else 'Niedostępny' 
+"""
