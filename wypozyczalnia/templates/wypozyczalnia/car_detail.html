@@ -1,0 +1,10 @@
+{%extends 'wypozyczalnia/base.html'%}
+{% block content %}
+<div class="content-section">
+    {{ car }}
+    <div>
+        <button  class="btn btn-submit"><a href ="{% url 'car_edit' pk=car.pk%}">Edytuj</a></button>
+        <button  class="btn btn-danger"><a href ="{% url 'car_delete' pk=car.pk%}">Usuń</a></button>
+    </div>
+</div>
+{%endblock content%}

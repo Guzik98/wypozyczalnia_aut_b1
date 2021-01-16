@@ -4,7 +4,7 @@
 {% for car in cars %}
 <div class="column" >  
     <figure> 
-        <img src = "{{ car.photo.url }}" class="img-fluid" alt="Responsive image" width="300" height="400">
+        <a href ="{% url 'car_detail' pk=car.pk %}"><img src = "{{ car.photo.url }}" class="img-fluid" alt="Responsive image" width="300" height="400"></a>
         <figcaption>
             {{ car }}
         </figcaption>

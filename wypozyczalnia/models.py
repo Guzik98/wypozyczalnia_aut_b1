@@ -82,19 +82,3 @@ class Car(models.Model):
                f'{self.cena_za_godzine}zl - ' + 'Dostępny' if self.dostepnosc else 'Niedostępny' 
 
                 
-
-"""
-class Gallery(models.Model):
-    photo = models.ImageField(upload_to='cars/%Y/%m/%d')
-    car = models.ForeignKey(Car, on_delete=models.CASCADE, related_name='photos')
-
-    class Meta:
-        db_table = 'gallery'
-
-    def publish(self):
-        self.save()
-
-    def __str__(self):
-        return f'Marka {self.car.nazwa} Silnik: {self.car.silnik.name} Rok produkcji: {self.car.rok_produkcji}' \
-               f' Cena: {self.car.cena_za_godzine}zl - ' + 'Dostępny' if self.car.dostepnosc else 'Niedostępny' 
-"""
