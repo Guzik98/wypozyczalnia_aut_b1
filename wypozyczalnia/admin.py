@@ -37,7 +37,7 @@ class CarAdmin(admin.ModelAdmin):
     def engine(self, obj):
         return obj.engine
 
-
+"""
 @admin.register(models.Gallery)
 class GalleryAdmin(admin.ModelAdmin):
     list_display = ('photo', 'car')
@@ -45,3 +45,4 @@ class GalleryAdmin(admin.ModelAdmin):
 
     def car(self, obj):
         return obj.car
+"""

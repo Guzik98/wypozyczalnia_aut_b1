@@ -58,16 +58,16 @@ class AditionalEquipment(models.Model):
 
 class Car(models.Model):
     nazwa = models.CharField(max_length=20)
+    model = models.ForeignKey(Model, on_delete=models.CASCADE, related_name='cars', null=True)
     rok_produkcji = models.IntegerField()
     cena_za_godzine = models.IntegerField()
     dostepnosc = models.BooleanField(default=True)
     klimatyzacja = models.BooleanField(default=True)
     ilosc_drzwi = models.IntegerField()
     ocena = models.FloatField(default=0)
-    model = models.ForeignKey(Model, on_delete=models.CASCADE, related_name='cars', null=True)
     silnik = models.ForeignKey(Engine, on_delete=models.CASCADE, related_name='cars', null=True)
     opcjonalne_wyposazenie = models.ManyToManyField(AditionalEquipment, related_name='cars')
-
+    photo = models.ImageField(upload_to='cars/%Y/%m/%d', default='no_image.png')
     class Meta:
         db_table = 'car'
         ordering = ('model',)
@@ -75,23 +75,17 @@ class Car(models.Model):
     def publish(self):
         self.save()
 
-    def __str__(self):
-        return f'{self.model.name} {self.nazwa} | {self.silnik.name} - {self.rok_produkcji} | ' \
-               f'{self.cena_za_godzine}zl - ' + 'Dostępny' if self.dostepnosc else 'Niedostępny' 
+    def set_OpcjonalneWyposarzenie(self,opcjonalne_wyposazenie):
+        self.opcjonalne_wyposazenie = opcjonalne_wyposazenie
 
-                
+    def get_opcjonalne_wyposazenie(self):
+        return "\n".join([p.name for p in self.opcjonalne_wyposazenie.all()])
 
+    def getKlimatyzacja(self):
+        return 'Jest klimatyzacja' if self.klimatyzacja else 'Brak klimatyzacji'
 
-class Gallery(models.Model):
-    photo = models.ImageField(upload_to='cars/%Y/%m/%d')
-    car = models.ForeignKey(Car, on_delete=models.CASCADE, related_name='photos')
-
-    class Meta:
-        db_table = 'gallery'
-
-    def publish(self):
-        self.save()
+    def getDostepnosc(self):
+        return 'Dostępny' if self.dostepnosc else 'Niedostępny'
 
     def __str__(self):
-        return f'Marka {self.car.nazwa} Silnik: {self.car.silnik.name} Rok produkcji: {self.car.rok_produkcji}' \
-               f' Cena: {self.car.cena_za_godzine}zl - ' + 'Dostępny' if self.car.dostepnosc else 'Niedostępny' 
+        return f'{self.model.name} {self.nazwa} {self.rok_produkcji} {self.cena_za_godzine} {self.ilosc_drzwi} {self.ocena} {self.model} {self.silnik} {self.opcjonalne_wyposazenie}'

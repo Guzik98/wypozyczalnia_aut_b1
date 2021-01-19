@@ -1,15 +1,27 @@
 {%extends 'wypozyczalnia/base.html'%}
 {% block content %}
-<div class="content-section">
-{% for gallery in gallerys %}
-<div class="column" >  
-    <figure> 
-        <img src = "{{ gallery.photo.url }}" class="img-fluid" alt="Responsive image" width="300" height="400">
-        <figcaption>
-            {{ gallery }}
-        </figcaption>
-    </figure>
+{% for car in cars %}
+<div class="kontener">
+    <a href ="{% url 'car_detail' pk=car.pk %}"><img src = "{{ car.photo.url }}" class="imagesize" alt="Responsive image" width="693" height="400"></a> 
+</div>
+<div class="polaroid">
+    <div class="container2">
+    <p>
+        <div class="desc">
+            <h2>Nazwa: {{ car.nazwa }}</h2>
+            <h4><b>Model: {{ car.model}}</b></h4>
+            <div class="text">
+                <p class = "text-justify"> Silnik: {{ car.silnik.name }} </p>
+                <br>
+                <p class = "text-justify"> Rok produkcji: {{ car.rok_produkcji }} </p>
+                <br>
+                <p class = "text-justify"> Cena za godzinę: {{ car.cena_za_godzine }} </p>
+                <br>
+                <p class = "text-justify"> Dostępność pojazdu: {{ car.getDostepnosc }} </p>
+            </div>
+        </div>
+    </p>
+    </div>
 </div>
 {% endfor %}
-</div>
 {%endblock content%}
