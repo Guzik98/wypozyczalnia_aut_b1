@@ -22,8 +22,13 @@
         </div>
     </p>
     <div>
-        <button  class="btn btn-submit"><a href ="{% url 'car_edit' pk=car.pk%}">Edytuj</a></button>
-        <button  class="btn btn-danger"><a href ="{% url 'car_delete' pk=car.pk%}">Usuń</a></button>
+        {% if user.is_authenticated %}
+        <button  class="btn btn-submit"><a href ="{% url 'rezerwacja' pk=car.pk%}">Rezerwuj</a></button>
+            {%if request.user.is_staff %}
+            <button  class="btn btn-submit"><a href ="{% url 'car_edit' pk=car.pk%}">Edytuj</a></button>
+            <button  class="btn btn-danger"><a href ="{% url 'car_delete' pk=car.pk%}">Usuń</a></button>
+            {% endif %}
+        {% endif %}
     </div>
 </div>
 {%endblock content%}

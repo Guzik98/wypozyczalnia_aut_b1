@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 {% block content %}
 <div class="content-section">
-    <h2>Dodaj samochód</h2>
+    <h2>Utwórz rezerwację</h2>
     <form method="POST" class="post-form" id="form1" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form|crispy }}

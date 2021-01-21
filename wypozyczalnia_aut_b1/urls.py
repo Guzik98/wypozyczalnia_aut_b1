@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path, include
 from users import views as user_views
+from rezerwacja import views as rezerwacja_views
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -44,6 +45,8 @@ path('password-reset-complete/',
     path('password/', auth_views.PasswordResetView.as_view(template_name='users/password_reset.html'),
          name="password"),
     path('edit_account_redirect/', user_views.edit_account_redirect, name='edit_account_redirect'),
+
+    path('rezerwacja/<int:pk>/', rezerwacja_views.add_rezerwacja, name='rezerwacja'),
 
 ]
 

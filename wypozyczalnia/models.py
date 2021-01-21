@@ -75,8 +75,8 @@ class Car(models.Model):
     def publish(self):
         self.save()
 
-    def set_OpcjonalneWyposarzenie(self,opcjonalne_wyposazenie):
-        self.opcjonalne_wyposazenie = opcjonalne_wyposazenie
+    def set_dostepnosc(self, new_dostepnosc):
+        self.dostepnosc=new_dostepnosc
 
     def get_opcjonalne_wyposazenie(self):
         return "\n".join([p.name for p in self.opcjonalne_wyposazenie.all()])
@@ -88,4 +88,4 @@ class Car(models.Model):
         return 'Dostępny' if self.dostepnosc else 'Niedostępny'
 
     def __str__(self):
-        return f'{self.model.name} {self.nazwa} {self.rok_produkcji} {self.cena_za_godzine} {self.ilosc_drzwi} {self.ocena} {self.model} {self.silnik} {self.opcjonalne_wyposazenie}'
+        return f'{self.model.name} {self.nazwa} {self.rok_produkcji} {self.cena_za_godzine} {self.ilosc_drzwi} {self.ocena} {self.model} {self.silnik}'
