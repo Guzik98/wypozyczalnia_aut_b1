@@ -2,13 +2,21 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from phonenumber_field.formfields import PhoneNumberField
 from .models import Account
-from bootstrap_datepicker_plus import DateTimePickerInput
+#from bootstrap_datepicker_plus import DateTimePickerInput
 from django.contrib.admin.widgets import AdminDateWidget
 import datetime
 from django.core.exceptions import ValidationError
 
 class DateInput(forms.DateInput):
     input_type = 'date'
+
+
+def Nr_dokumentu_validacja(value):
+     if len(value)<9:
+       raise ValidationError('Nieprawidlowy numer dokumentu')
+
+#def Nr_telefonu_validacja(value)
+
 
 def not_past_days(value):
     value = value.strftime('%y-%m-%d')
@@ -18,11 +26,13 @@ def not_past_days(value):
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
-    driving_license = forms.DateField(widget=DateInput(), validators=[not_past_days])
+    Data_waznosc_prawo_jazdy = forms.DateField(widget=DateInput(), validators=[not_past_days], label = 'Data ważności prawa jazdy' ) 
+    Nr_dokumentu = forms.CharField(validators=[Nr_dokumentu_validacja], label = 'Numer dokumentu prawa jazdy')
+    phone = PhoneNumberField( label = 'Numer telefonu z numerem kierunkowym')
     class Meta:
         model = Account
         wigdets = {
-            'driving_license' : DateInput(
+            'Data_waznosc_prawo_jazdy' : DateInput(
             attrs={'class': 'picker',  'autocomplete': 'off'}),
         }
         labels = {
@@ -30,15 +40,16 @@ class UserRegisterForm(UserCreationForm):
             "first_name": "Imię",
             "last_name": "Nazwisko",
             "phone": "Numer telefonu",
-            "driving_license": "Prawo jazdy ważne do",
+            "Data_waznosc_prawo_jazdy": "Prawo jazdy ważne do",
+            "Nr_dokumentu": "Numer indetyfikujący prawo jazdy",
         }
-
-        phone = PhoneNumberField()
-        fields = ['email', 'username','first_name','last_name','phone',  'driving_license', 'password1', 'password2',]
+        fields = ['email', 'username','first_name','last_name','phone',  'Data_waznosc_prawo_jazdy','Nr_dokumentu', 'password1', 'password2',]
 
 class EmployeeRegisterForm(UserCreationForm):
     email = forms.EmailField()
-    driving_license = forms.DateField(widget=DateInput(), validators=[not_past_days])
+    Data_waznosc_prawo_jazdy = forms.DateField(widget=DateInput(), validators=[not_past_days], label = 'Data ważności prawa jazdy' ) 
+    Nr_dokumentu = forms.CharField(validators=[Nr_dokumentu_validacja], label = 'Numer dokumentu prawa jazdy')
+    phone = PhoneNumberField( label = 'Numer telefonu z numerem kierunkowym')
     class Meta:
         model = Account
         labels = {
@@ -46,31 +57,37 @@ class EmployeeRegisterForm(UserCreationForm):
             "last_name": "Nazwisko",
             "username": "Nazwa użytkownika",
             "phone": "Numer telefonu",
-            "driving_license": "Prawo jazdy ważne do",
+            "Data_waznosc_prawo_jazdy": "Prawo jazdy ważne do",
+            "Nr_dokumentu": "Numer indetyfikujący prawo jazdy",
             "is_staff": "Pracownik",
             }
-        phone = PhoneNumberField()
-        fields = [ 'email','first_name','last_name', 'username','phone','is_staff','driving_license', 'password1', 'password2',]
+        
+        fields = [ 'email','first_name','last_name', 'username','phone','is_staff','Data_waznosc_prawo_jazdy','Nr_dokumentu', 'password1', 'password2',]
 
 class ManagerRegisterForm(UserCreationForm):
     email = forms.EmailField()
-    driving_license = forms.DateField(widget=DateInput(), validators=[not_past_days])
+    Data_waznosc_prawo_jazdy = forms.DateField(widget=DateInput(), validators=[not_past_days], label = 'Data ważności prawa jazdy' ) 
+    Nr_dokumentu = forms.CharField(validators=[Nr_dokumentu_validacja], label = 'Numer dokumentu prawa jazdy')
+    phone = PhoneNumberField( label = 'Numer telefonu z numerem kierunkowym')
     class Meta:
         labels = {
             "first_name": "Imię",
             "last_name": "Nazwisko",
             "username": "Nazwa użytkownika",
             "phone": "Numer telefonu",
-            "driving_license": "Prawo jazdy ważne do",
+            "Data_waznosc_prawo_jazdy": "Prawo jazdy ważne do",
+            "Nr_dokumentu": "Numer indetyfikujący prawo jazdy",
             "is_staff": "Pracownik",
                 }
-        phone = PhoneNumberField()
+        
         model = Account
-        fields = [ 'email', 'first_name','last_name', 'username','phone','is_staff','driving_license','password1', 'password2',]
+        fields = [ 'email', 'first_name','last_name', 'username','phone','is_staff','Data_waznosc_prawo_jazdy','Nr_dokumentu','password1', 'password2',]
 
 class UserUpdateForm(UserChangeForm):
     email = forms.EmailField()
-    driving_license = forms.DateField(widget=DateInput(), validators=[not_past_days])
+    Data_waznosc_prawo_jazdy = forms.DateField(widget=DateInput(), validators=[not_past_days], label = 'Data ważności prawa jazdy' ) 
+    Nr_dokumentu = forms.CharField(validators=[Nr_dokumentu_validacja], label = 'Numer dokumentu prawa jazdy')
+    phone = PhoneNumberField( label = 'Numer telefonu z numerem kierunkowym')
     class Meta:
         model = Account
         labels = {
@@ -78,7 +95,7 @@ class UserUpdateForm(UserChangeForm):
             "first_name": "Imię",
             "last_name": "Nazwisko",
             "phone": "Numer telefonu",
-            "driving_license": "Prawo jazdy ważne do",
+            "Data_waznosc_prawo_jazdy": "Prawo jazdy ważne do",
+            "Nr_dokumentu": "Numer indetyfikujący prawo jazdy",
         }
-        phone = PhoneNumberField()
-        fields = [ 'email','first_name','last_name','phone', 'driving_license', 'password',]
+        fields = [ 'email','first_name','last_name','phone', 'Data_waznosc_prawo_jazdy','Nr_dokumentu', 'password',]

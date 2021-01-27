@@ -12,7 +12,7 @@ class FuelTypeAdmin(admin.ModelAdmin):
 
 @admin.register(models.Engine)
 class EngineAdmin(admin.ModelAdmin):
-    list_display = ('name', 'power', 'consumation')
+    list_display = ('name', 'power', 'consumation', 'fuel_type') 
     search_fields = ('name',)
     list_filter = ('name', 'consumation')
 
@@ -30,6 +30,7 @@ class CarAdmin(admin.ModelAdmin):
     list_editable = ('cena_za_godzine', 'dostepnosc')
     list_filter = ('dostepnosc', 'ocena')
     list_select_related = ('model', 'silnik')
+
 
     def model(self, obj):
         return obj.model

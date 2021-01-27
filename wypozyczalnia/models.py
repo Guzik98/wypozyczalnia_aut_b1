@@ -27,7 +27,7 @@ class Engine(models.Model):
         self.save()
 
     def __str__(self):
-        return f'{self.name} | {self.power} KS - {self.consumation} l '
+        return f'{self.name} | moc - {self.power} spalanie - {self.consumation} l |  typ paliwa - {self.fuel_type} '
 
 
 class Model(models.Model):

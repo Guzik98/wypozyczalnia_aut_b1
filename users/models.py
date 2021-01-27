@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 from phonenumber_field.formfields import PhoneNumberField
 
 class MyAccountManager(BaseUserManager):
-    def create_user(self, email, username, first_name, last_name, phone, password=None,):
+    def create_user(self, email, username, first_name, last_name, phone,Data_waznosc_prawo_jazdy,Nr_dokumentu,password=None):
         if not email:
             raise ValueError("Użytkownik musi podać adres e-mail")
         if not username:
@@ -15,6 +15,10 @@ class MyAccountManager(BaseUserManager):
             raise ValueError("Użytkownik musi podać nazwisko")
         if not phone:
             raise ValueError("Użytkownik musi podać numer telefonu")
+        if not Data_waznosc_prawo_jazdy:
+            raise ValueError("Użytkownik musi podać date waznosc prawa  jazdy")
+        if not Nr_dokumentu:
+            raise ValueError("Użytkownik musi podać numer prawa jazdy")
 
         user  = self.model(
                 email=self.normalize_email(email),
@@ -22,13 +26,15 @@ class MyAccountManager(BaseUserManager):
                 first_name=first_name,
                 last_name=last_name,
                 phone=phone,
+                Data_waznosc_prawo_jazdy = Data_waznosc_prawo_jazdy,
+                Nr_dokumentu = Nr_dokumentu,
             )
 
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, username, password, first_name, last_name, phone):
+    def create_superuser(self, email, username, password, first_name, last_name, phone, Nr_dokumentu,Data_waznosc_prawo_jazdy):
         user  = self.create_user(
                 email=self.normalize_email(email),
                 password=password,
@@ -36,6 +42,9 @@ class MyAccountManager(BaseUserManager):
                 first_name=first_name,
                 last_name=last_name,
                 phone=phone,
+                Data_waznosc_prawo_jazdy = Data_waznosc_prawo_jazdy,
+                Nr_dokumentu = Nr_dokumentu,
+
             )
         user.is_admin = True
         user.is_staff = True
@@ -58,11 +67,13 @@ class Account(AbstractBaseUser):
     first_name 				= models.CharField(max_length=30)
     last_name               = models.CharField(max_length=30)
     phone                   = models.CharField(max_length=12)
-    driving_license         = models.CharField(max_length=10)
+    Data_waznosc_prawo_jazdy        = models.CharField(max_length=10)
+    Nr_dokumentu             = models.CharField(max_length=9)
+    
 
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username','first_name','last_name','phone',]
+    REQUIRED_FIELDS = ['username','first_name','last_name','phone','Data_waznosc_prawo_jazdy','Nr_dokumentu']
 
     objects = MyAccountManager()
 
