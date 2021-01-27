@@ -4,7 +4,15 @@ from wypozyczalnia.models import Car
 from .forms import RezerwacjaForm
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required,user_passes_test
+
+
+
+@user_passes_test(lambda u: u.is_staff)
+def rezerwacja(request):
+    rezerwacje = Rezerwacja.objects.all()
+    return render(request, 'rezerwacja/rezerwacja_wyswietlanie.html', { 'rezerwacje':rezerwacje })
+
 
 @login_required
 def add_rezerwacja(request,pk):
@@ -24,3 +32,5 @@ def add_rezerwacja(request,pk):
     else:
         form = RezerwacjaForm()
     return render(request, 'rezerwacja/rezerwacja.html',{'form':form})
+
+

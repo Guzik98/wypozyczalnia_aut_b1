@@ -48,6 +48,9 @@ urlpatterns = [
 
     path('rezerwacja/<int:pk>/', rezerwacja_views.add_rezerwacja, name='rezerwacja'),
 
+    path('wyswietlanie_rezerwacji/', rezerwacja_views.rezerwacja, name='rezerwacja_widok'),
+
+
 ]
 
 if settings.DEBUG:

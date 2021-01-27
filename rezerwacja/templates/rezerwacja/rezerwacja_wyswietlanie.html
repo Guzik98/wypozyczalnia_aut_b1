@@ -1,0 +1,27 @@
+{%extends 'wypozyczalnia/base.html'%}
+{% block content %}
+{% for rezerwacja in rezerwacje %}
+
+<div class="polaroid3">
+    <div class="container2">
+        <div class="desc">        
+            <div class="text">
+                <p class = "text-justify"> Osoba wypozyczajaca: {{ rezerwacja.osoba_wypozyczajaca }} </p>
+                <br>
+                <p class = "text-justify"> Wypożyczane auto: {{ rezerwacja.auto_wypozyczane }} </p>
+                <br>
+                <p class = "text-justify"> Data odbioru: {{ rezerwacja.data_odbioru }} </p>
+                <br>
+                <p class = "text-justify"> Miejsce odbioru: {{ rezerwacja.miejsce_odbioru }} </p>
+                <br>
+                <p class = "text-justify"> Data zwrotu: {{ rezerwacja.data_zwrotu }} </p>
+                <br>
+                <p class = "text-justify"> Miejsce zwrotu: {{ rezerwacja.miejsce_zwrotu }} </p>
+                <br>
+                <p class = "text-justify"> Godzina zwrotu: {{ rezerwacja.godzina_zwrotu }} </p> 
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{%endblock content%}
