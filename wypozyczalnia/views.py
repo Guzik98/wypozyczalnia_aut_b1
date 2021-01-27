@@ -4,6 +4,8 @@ from .forms import CarForm
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required, user_passes_test
 
 
 
@@ -11,6 +13,7 @@ def home(request):
     cars = Car.objects.all()
     return render(request, 'wypozyczalnia/home.html', { 'cars':cars })
 
+@user_passes_test(lambda u: u.is_staff)
 def addcar(request):
     if request.method == 'POST':
         form = CarForm(request.POST, request.FILES)
@@ -27,6 +30,7 @@ def car_detail(request, pk):
     car = get_object_or_404(Car, pk=pk)
     return render(request, 'wypozyczalnia/car_detail.html', {'car': car})
 
+@user_passes_test(lambda u: u.is_staff)
 def car_edit(request, pk):
     car = get_object_or_404(Car, pk=pk)
     if request.method == "POST":
@@ -39,6 +43,7 @@ def car_edit(request, pk):
         form = CarForm(instance=car)
     return render(request, 'wypozyczalnia/car_edit.html', {'form': form})
 
+@user_passes_test(lambda u: u.is_staff)
 def car_delete(request, pk):
     car = get_object_or_404(Car, pk=pk)
     if request.method == "POST":

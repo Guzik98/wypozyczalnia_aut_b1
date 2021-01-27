@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from .forms import UserRegisterForm, EmployeeRegisterForm, UserUpdateForm
+from django.contrib.auth.decorators import login_required, user_passes_test
 
 
 def register(request):
@@ -16,6 +17,7 @@ def register(request):
         form = UserRegisterForm()
     return render(request, 'users/register.html',{'form':form})
 
+@user_passes_test(lambda u: u.is_manager)
 def registerEmployee(request):
     if request.method == 'POST':
         form = EmployeeRegisterForm(request.POST)
@@ -28,6 +30,7 @@ def registerEmployee(request):
         form = EmployeeRegisterForm()
     return render(request, 'users/register.html',{'form':form})
 
+@login_required
 def edit_account_redirect(request):
     if request.method == 'POST':
         edit_form = UserUpdateForm(request.POST,instance=request.user)

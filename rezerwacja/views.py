@@ -3,7 +3,10 @@ from .models import Rezerwacja
 from wypozyczalnia.models import Car
 from .forms import RezerwacjaForm
 from django.shortcuts import render, get_object_or_404
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def add_rezerwacja(request,pk):
     car = get_object_or_404(Car, pk=pk)
     if request.method == 'POST':

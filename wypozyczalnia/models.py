@@ -67,7 +67,7 @@ class Car(models.Model):
     ocena = models.FloatField(default=0)
     silnik = models.ForeignKey(Engine, on_delete=models.CASCADE, related_name='cars', null=True)
     opcjonalne_wyposazenie = models.ManyToManyField(AditionalEquipment, related_name='cars')
-    photo = models.ImageField(upload_to='cars/%Y/%m/%d', default='no_image.png')
+    zdjecie = models.ImageField(upload_to='cars/%Y/%m/%d', default='no_image.png')
     class Meta:
         db_table = 'car'
         ordering = ('model',)

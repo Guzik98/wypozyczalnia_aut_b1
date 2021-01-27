@@ -1,6 +1,12 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
+<script type="text/javascript" src="/admin/jsi18n/"></script>
+<script type="text/javascript" src="{% static 'admin/js/core.js' %}"></script>
+<script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+<script type="text/javascript" src="{% static 'admin/js/jquery.init.js' %}"></script>
+{{ form.media }}
+
 
 <head>
     <title>
@@ -11,7 +17,8 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/base.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/widgets.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'wypozyczalnia/main.css' %}">
 
     <head>
@@ -19,7 +26,7 @@
         <body>
 
             <header class="site-header">
-                <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">                  
+                <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
                     <div class="container">
                         <a class="navbar-brand mr-4" href="{% url 'wypozyczalnia-home' %}">Wypozyczalnia aut</a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,7 +46,7 @@
                                 <a class="nav-item nav-link" href="{% url 'register' %}">Zarejestruj się</a> {% endif %} {%if request.user.is_manager %}
                                 <a class="nav-item nav-link" href="{% url 'registerEmployee' %}">Stwórz pracownika</a> {% endif %} {%if request.user.is_staff %}
                                 <a class="nav-item nav-link" href="{% url 'newCar' %}">Dodaj samochód</a>{% endif %}
-                  
+
                             </div>
                         </div>
                     </div>

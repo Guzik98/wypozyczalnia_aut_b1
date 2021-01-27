@@ -2,7 +2,7 @@
 {% block content %}
 {% for car in cars %}
 <div class="kontener">
-    <a href ="{% url 'car_detail' pk=car.pk %}"><img src = "{{ car.photo.url }}" class="imagesize" alt="Responsive image" width="693" height="400"></a> 
+    <a href ="{% url 'car_detail' pk=car.pk %}"><img src = "{{ car.zdjecie.url }}" class="imagesize" alt="Responsive image" width="693" height="400"></a> 
 </div>
 <div class="polaroid">
     <div class="container2">

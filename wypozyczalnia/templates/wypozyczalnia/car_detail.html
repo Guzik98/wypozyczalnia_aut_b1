@@ -3,7 +3,7 @@
 <div class="content-section">
     <p>
         <div class="desc">
-            <a href ="{% url 'car_detail' pk=car.pk %}"><img src = "{{ car.photo.url }}" class="img-fluid" alt="Responsive image" width="600" height="800"></a>
+            <a href ="{% url 'car_detail' pk=car.pk %}"><img src = "{{ car.zdjecie.url }}" class="img-fluid" alt="Responsive image" width="600" height="800"></a>
             <h2>{{ car.nazwa }}</h2>
             <h4><b>{{ car.model}}</b></h4>
             <div class="text">
@@ -22,13 +22,14 @@
         </div>
     </p>
     <div>
-        {% if user.is_authenticated %}
+        {% if user.is_authenticated and car.dostepnosc %}
         <button  class="btn btn-submit"><a href ="{% url 'rezerwacja' pk=car.pk%}">Rezerwuj</a></button>
+        {% endif %}
             {%if request.user.is_staff %}
             <button  class="btn btn-submit"><a href ="{% url 'car_edit' pk=car.pk%}">Edytuj</a></button>
             <button  class="btn btn-danger"><a href ="{% url 'car_delete' pk=car.pk%}">Usuń</a></button>
             {% endif %}
-        {% endif %}
+
     </div>
 </div>
 {%endblock content%}

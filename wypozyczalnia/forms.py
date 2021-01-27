@@ -1,17 +1,18 @@
 from django import forms
 from .models import Car
+from django.utils.translation import ugettext_lazy as _
 
 class CarForm(forms.ModelForm):
 
     class Meta:
-        model = Car       
-        fields = ('nazwa',
-        'rok_produkcji',
-        'cena_za_godzine',
-        'dostepnosc',
-        'klimatyzacja',
-        'ilosc_drzwi',
-        'model',
-        'silnik',
-        'opcjonalne_wyposazenie',
-        'photo',)
+        model = Car
+        fields = (_('nazwa'),
+        _('rok_produkcji'),
+        _('cena_za_godzine'),
+        _('dostepnosc'),
+        _('klimatyzacja'),
+        _('ilosc_drzwi'),
+        _('model'),
+        _('silnik'),
+        _('opcjonalne_wyposazenie'),
+        _('zdjecie'),)
