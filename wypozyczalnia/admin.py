@@ -23,9 +23,14 @@ class ModelAdmin(admin.ModelAdmin):
     search_fields = ('name',)
 
 
+@admin.register(models.Segment)
+class ModelAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    search_fields = ('name',)
+
 @admin.register(models.Car)
 class CarAdmin(admin.ModelAdmin):
-    list_display = ('nazwa', 'model', 'rok_produkcji', 'silnik', 'cena_za_godzine', 'dostepnosc', 'ocena','klimatyzacja','ilosc_drzwi')
+    list_display = ('nazwa', 'model', 'rok_produkcji', 'silnik', 'cena_za_godzine', 'dostepnosc', 'ocena','klimatyzacja','ilosc_drzwi','segment')
     search_fields = ('nazwa',)
     list_editable = ('cena_za_godzine', 'dostepnosc')
     list_filter = ('dostepnosc', 'ocena')

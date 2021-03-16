@@ -56,9 +56,23 @@ class AditionalEquipment(models.Model):
         return self.name
 
 
+class Segment(models.Model):
+    name = models.CharField(max_length=1, unique = True)
+
+    class Meta:
+        db_table = 'segment'
+
+    def publish(self):
+        self.save()
+
+    def __str__(self):
+        return self.name
+
+
 class Car(models.Model):
     nazwa = models.CharField(max_length=20)
     model = models.ForeignKey(Model, on_delete=models.CASCADE, related_name='cars', null=True)
+    segment = models.ForeignKey(Segment, on_delete=models.CASCADE, related_name='cars', null=True)
     rok_produkcji = models.IntegerField()
     cena_za_godzine = models.IntegerField()
     dostepnosc = models.BooleanField(default=True)
@@ -88,4 +102,5 @@ class Car(models.Model):
         return 'Dostępny' if self.dostepnosc else 'Niedostępny'
 
     def __str__(self):
-        return f'{self.model.name} {self.nazwa} {self.rok_produkcji} {self.cena_za_godzine} {self.ilosc_drzwi} {self.ocena} {self.model} {self.silnik}'
+        return f'{self.model.name} {self.nazwa} {self.segment.name} {self.rok_produkcji} {self.cena_za_godzine} {self.ilosc_drzwi} {self.ocena} {self.model} {self.silnik} '
+

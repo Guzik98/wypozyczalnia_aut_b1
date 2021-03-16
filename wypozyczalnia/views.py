@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Car, AditionalEquipment, Model, Engine, FuelType
-from .forms import CarForm
+from .forms import CarForm, SegmentForm
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
@@ -55,3 +55,20 @@ def car_delete(request, pk):
     else:
         form = CarForm(instance=car)
     return render(request, 'wypozyczalnia/car_delete.html', {'form': form})
+
+
+@user_passes_test(lambda u: u.is_manager)
+def addsegment(request):
+    if request.method == 'POST':
+        form = SegmentForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('wypozyczalnia-home')
+        else:
+            print(form.errors)
+    else:
+        form = SegmentForm()
+    return render(request, 'wypozyczalnia/addSegment.html',{'form':form})
+
+
+    

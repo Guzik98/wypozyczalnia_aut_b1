@@ -1,0 +1,13 @@
+{%extends 'wypozyczalnia/base.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="content-section">
+    <h2>Dodaj segment</h2>
+    <form method="POST" class="post-form" id="form1" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="save btn btn-default">Zapisz</button>
+    </form>
+
+</div>
+{%endblock content%}
