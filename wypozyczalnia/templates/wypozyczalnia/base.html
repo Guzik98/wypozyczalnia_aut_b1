@@ -35,7 +35,7 @@
                         <div class="collapse navbar-collapse" id="navbarToggle">
                             <div class="navbar-nav mr-auto">
                                 <a class="nav-item nav-link" href="{% url 'wypozyczalnia-home' %}">Strona startowa</a>
-                                <a class="nav-item nav-link" href="#">O stronie</a>
+                                <a class="nav-item nav-link" href="{% url 'artykuly_widok' %}">Artykuły</a>
                             </div>
                             <!-- Navbar Right Side -->
                             <div class="navbar-nav">
@@ -45,8 +45,9 @@
                                 <a class="nav-item nav-link" href="{% url 'login' %}">Zaloguj się</a>
                                 <a class="nav-item nav-link" href="{% url 'register' %}">Zarejestruj się</a> {% endif %} {%if request.user.is_manager %}
                                 <a class="nav-item nav-link" href="{% url 'registerEmployee' %}">Stwórz pracownika</a>
-                                <a class="nav-item nav-link" href= {% url 'addSegment'%}>Dodaj segment</a> {% endif %} {%if request.user.is_staff %}
+                                <a class="nav-item nav-link" href= "{% url 'addSegment' %}">Dodaj segment</a> {% endif %} {%if request.user.is_staff %}
                                 <a class="nav-item nav-link" href="{% url 'newCar' %}">Dodaj samochód</a>
+                                <a class="nav-item nav-link" href="{% url 'addArticle' %}">Dodaj Artykul</a>
                                 
                                 <a class="nav-item nav-link" href="{% url 'rezerwacja_widok' %}">Spis rezerwacji</a>{% endif %}
 

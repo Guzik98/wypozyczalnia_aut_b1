@@ -18,6 +18,7 @@ from django.contrib.auth import views as auth_views
 from django.urls import path, include
 from users import views as user_views
 from rezerwacja import views as rezerwacja_views
+from artykuly import views as artykuly_views
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -49,6 +50,9 @@ urlpatterns = [
     path('rezerwacja/<int:pk>/', rezerwacja_views.add_rezerwacja, name='rezerwacja'),
 
     path('wyswietlanie_rezerwacji/', rezerwacja_views.rezerwacja, name='rezerwacja_widok'),
+
+    path('newArticle/', artykuly_views.addArticle, name="addArticle"),
+    path('wyswietlanieArtykulu/', artykuly_views.displayArticle, name='artykuly_widok'),
 
 
 ]

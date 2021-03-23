@@ -1,0 +1,20 @@
+{%extends 'wypozyczalnia/base.html'%}
+{% block content %}
+{% for article in articles %}
+<div class="kontener">
+<img src = "{{ article.zdjecie.url }}" class="imagesize" alt="Responsive image" width="693" height="400"> 
+</div>
+<div class="polaroid">
+    <div class="container2">
+    <p>
+        <div class="desc">
+            <h2>Tytuł: {{ article.title }}</h2>
+            <h3><b>Treść: {{ article.text}}</b></h3>
+            <h4><b>Data publikacji: {{ article.published_date}}</b></h4>
+            <h4><b>Autor: {{ article.author}}</b></h4>
+        </div>
+    </p>
+    </div>
+</div>
+{% endfor %}
+{%endblock content%}
