@@ -28,6 +28,7 @@ urlpatterns = [
     path('register/', user_views.register, name='register'),
     path('registerEmployee/', user_views.registerEmployee, name='registerEmployee'),
     path('', include('wypozyczalnia.urls')),
+    path('wyswietlanieArtykulow/', include('artykuly.urls')),
     path('login/',auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
     path('logout/',auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
     path('password-reset/', auth_views.PasswordResetView.as_view(template_name='users/password_reset.html'),
@@ -51,8 +52,7 @@ urlpatterns = [
 
     path('wyswietlanie_rezerwacji/', rezerwacja_views.rezerwacja, name='rezerwacja_widok'),
 
-    path('newArticle/', artykuly_views.addArticle, name="addArticle"),
-    path('wyswietlanieArtykulu/', artykuly_views.displayArticle, name='artykuly_widok'),
+
 
 
 ]

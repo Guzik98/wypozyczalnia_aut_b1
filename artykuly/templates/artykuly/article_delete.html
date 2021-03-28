@@ -1,0 +1,11 @@
+{%extends 'wypozyczalnia/base.html'%}
+{% block content %}
+<div class="content-section">
+    <form method="POST" class="post-form" id="form1" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>Czy jesteś pewny, że chesz usunąć ten artykul?</p>
+        {{ form.as_p }}
+       <button type="submit" name="delete" class="btn btn-danger">Usuń</button>
+    </form>
+</div>
+{%endblock content%}
