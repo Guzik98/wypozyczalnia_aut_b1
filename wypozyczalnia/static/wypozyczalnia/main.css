@@ -135,3 +135,109 @@ div.polaroid3 {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-bottom: 25px;
   }
+
+  .dropbtn {
+    background-color: #5f788a;
+    color: rgb(255, 255, 255);
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .dropbtn:hover, .dropbtn:focus {
+    background-color: #5f788a;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #5f788a;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: rgb(0, 0, 0);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown a:hover {background-color: #31709c;}
+  
+  .show {display: block;}
+
+  /* Artykuł */
+
+  .main-content {
+    background-color: rgb(136, 170, 233);
+  }
+
+  .clearfix::after {
+      content: '';
+      display: block;
+      clear: both;
+  }
+
+  .contentArticle {
+      width: 90%;
+      margin: 30px auto 30px;;
+  }
+
+  .contentArticle .main-content {
+      width: 70%;
+      float: left;;
+  }
+
+  .contentArticle .sidebar {
+      width: 30%;
+      float: left;;
+      height: 300px;
+  }
+
+  .recent-post-title {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+
+  .recent-post-title .main-content{
+      margin: 20%;
+  }
+
+  .content .main-content .post {
+      width: 95%;
+      height: 270px;
+      margin:  20px auto;
+      border-radius: 5px;
+      background-color: white;
+      position: relative;
+  }
+
+  .post-image {
+      width: 40%;
+      height: 100%;
+      float: left;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 5px;
+
+  }
+
+  .content .main-content .post .post-preview {
+    width: 60%;
+    padding: 10px;
+    float: right;
+  }
+
+  .my_text{
+    font-family:    Arial, Helvetica, sans-serif;
+    font-size:      15px;
+  }
+

@@ -15,7 +15,6 @@ def Nr_dokumentu_validacja(value):
      if len(value)<9:
        raise ValidationError('Nieprawidlowy numer dokumentu')
 
-#def Nr_telefonu_validacja(value)
 
 
 def not_past_days(value):
@@ -98,4 +97,4 @@ class UserUpdateForm(UserChangeForm):
             "Data_waznosc_prawo_jazdy": "Prawo jazdy ważne do",
             "Nr_dokumentu": "Numer indetyfikujący prawo jazdy",
         }
-        fields = [ 'email','first_name','last_name','phone', 'Data_waznosc_prawo_jazdy','Nr_dokumentu', 'password',]
+        fields = [ 'email','first_name','last_name','phone', 'Data_waznosc_prawo_jazdy','Nr_dokumentu',]

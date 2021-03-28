@@ -1,20 +1,35 @@
 {%extends 'wypozyczalnia/base.html'%}
 {% block content %}
 {% for article in articles %}
-<div class="kontener">
-<img src = "{{ article.zdjecie.url }}" class="imagesize" alt="Responsive image" width="693" height="400"> 
-</div>
-<div class="polaroid">
-    <div class="container2">
-    <p>
-        <div class="desc">
-            <h2>Tytuł: {{ article.title }}</h2>
-            <h3><b>Treść: {{ article.text}}</b></h3>
-            <h4><b>Data publikacji: {{ article.published_date}}</b></h4>
-            <h4><b>Autor: {{ article.author}}</b></h4>
+<div class="contentArticle clearfix">
+    <div class="main-content">
+        <h1 class="recent-post-title">{{ article.title }}</h1>
+
+        <div class="post">
+            <img src = "{{ article.zdjecie.url }}" class="post-image" width="40%" height="100%"> 
+            <div class="post-preview">
+                <div>
+                    <i class="my_text">
+                        Data publikacji: {{ article.published_date}}
+                    </i>
+                </div>
+                <div>
+                    <i class="my_text">
+                        Autor: {{ article.author}}
+                    </i>
+                </div>                            
+                &nbsp;
+                <div>
+                    <p class="article-text">
+                        <i class="my_text">
+                            {{ article.text}}
+                        </i>
+                    </p>
+                </div>                      
+            </div>
         </div>
-    </p>
     </div>
+    <hr>
 </div>
 {% endfor %}
 {%endblock content%}
