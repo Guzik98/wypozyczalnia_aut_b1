@@ -8,16 +8,18 @@
         <div class="post">
             <a href ="{% url 'article_detail' pk=article.pk %}"><img src = "{{ article.zdjecie.url }}" class="post-image" width="40%" height="100%"></a>  
             <div class="post-preview">
-                <div>
-                    <i class="my_text">
-                        Data publikacji: {{ article.published_date}}
-                    </i>
-                </div>
-                <div>
-                    <i class="my_text">
-                        Autor: {{ article.author}}
-                    </i>
-                </div>                            
+                <div class="editArticle">
+                    <div>
+                        <i class="my_text">
+                            Data publikacji: {{ article.published_date}}
+                        </i>
+                    </div>
+                    <div>
+                        <i class="my_text">
+                            Autor: {{ article.author}}
+                        </i>
+                    </div> 
+                </div>                           
                 &nbsp;
                 <div>
                     <p class="article-text">

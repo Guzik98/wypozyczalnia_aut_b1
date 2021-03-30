@@ -230,6 +230,10 @@ div.polaroid3 {
 
   }
 
+  .post-preview-detail {
+    margin-left: 50%;
+  }
+
   .content .main-content .post .post-preview {
     width: 60%;
     padding: 10px;
@@ -241,3 +245,18 @@ div.polaroid3 {
     font-size:      15px;
   }
 
+/* Edyzja artykuł */
+
+edit {
+    font-size: large;
+    text-align: center;
+}
+
+.editArticle {
+    font-size: large;
+    text-align: center;
+}
+
+.article_edit_BTN {
+    position:absolute; left: 50%;; 
+}
