@@ -25,7 +25,9 @@ class SegmentForm(forms.ModelForm):
     class Meta: 
         model = Segment
         #name = forms.CharField(validators=[Segment_validacja], label = 'nazwa')
-        
+        labels = {
+            "name": "Nazwa",
+        }
         fields = ('name',)
 
     def Segment_validacja(self):

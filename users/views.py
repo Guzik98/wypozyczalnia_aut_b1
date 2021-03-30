@@ -25,7 +25,7 @@ def registerEmployee(request):
             form.save()
             username = form.cleaned_data.get('username')
             messages.success(request, f'Twoje konto zostało utworzone! Możesz się teraz zalogować')
-            return redirect('login')
+            return redirect('wypozyczalnia-home')
     else:
         form = EmployeeRegisterForm()
     return render(request, 'users/register.html',{'form':form})

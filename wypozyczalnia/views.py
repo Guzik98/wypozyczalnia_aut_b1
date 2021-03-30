@@ -57,7 +57,7 @@ def car_delete(request, pk):
     return render(request, 'wypozyczalnia/car_delete.html', {'form': form})
 
 
-@user_passes_test(lambda u: u.is_manager)
+@user_passes_test(lambda u: u.is_staff)
 def addsegment(request):
     if request.method == 'POST':
         form = SegmentForm(request.POST, request.FILES)
