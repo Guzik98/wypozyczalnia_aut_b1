@@ -14,118 +14,111 @@
     </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static 'admin/css/base.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'admin/css/widgets.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'wypozyczalnia/main.css' %}">
-
-    <head>
-
-        <body>
-
-            <header class="site-header">
-                <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
-                    <div class="container">
-                        <a class="navbar-brand mr-4" href="{% url 'wypozyczalnia-home' %}">Wypozyczalnia aut</a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                    </button>
-                        <div class="collapse navbar-collapse" id="navbarToggle">
-                            <div class="navbar-nav mr-auto">                                                       
-                            </div>
-                            <!-- Navbar Right Side -->
-                            <div class="navbar-nav">
-                                <div class="dropdown">
-                                    <button onclick="myCars()" class="dropbtn">Samochody</button>
-                                    <div id="myDropdownCars" class="dropdown-content">
-                                        <a class="nav-item nav-link" href="{% url 'wypozyczalnia-home' %}">Oferty</a> {%if request.user.is_staff %}
-                                        <a class="nav-item nav-link" href="{% url 'newCar' %}">Dodaj samochód</a>
-                                        <a class="nav-item nav-link" href= "{% url 'addSegment' %}">Dodaj segment</a>{% endif %}                                
-                                    </div>
-                                  </div>{%if request.user.is_manager %}
-                                <div class="dropdown">
-                                    <button onclick="myEmployess()" class="dropbtn">Pracownicy</button>
-                                    <div id="myDropdownEmployess" class="dropdown-content">
-                                        <a class="nav-item nav-link" href="{% url 'registerEmployee' %}">Stwórz pracownika</a>
-                                    </div>
-                                  </div>{% endif %}
-                                  <div class="dropdown">
-                                    <button onclick="myArticle()" class="dropbtn">Artykuły</button>
-                                    <div id="myDropdownArticle" class="dropdown-content">{%if request.user.is_staff %}
-                                        <a class="nav-item nav-link" href="{% url 'addArticle' %}">Dodaj Artykul</a>{% endif %} 
-                                        <a class="nav-item nav-link" href="{% url 'artykuly_widok' %}">Artykuły</a>
-                                    </div>
-                                  </div>
-                                  {%if request.user.is_staff %}
-                                  <div class="dropdown">
-                                    <button onclick="myReservations()" class="dropbtn">Rezerwacje</button>
-                                    <div id="myDropdownReservations" class="dropdown-content">
-                                        <a class="nav-item nav-link" href="{% url 'rezerwacja_widok' %}">Spis rezerwacji</a>
-                                    </div>
-                                  </div>  {% endif %}
-                                  <div class="dropdown">
-                                    <button onclick="myAccount()" class="dropbtn">Konto</button>
-                                        <div id="myDropdownAccount" class="dropdown-content">
-                                          {% if user.is_authenticated %}
-                                            <a class="nav-item nav-link" href="{% url 'edit_account_redirect' %}">Edytuj profil</a>
-                                            <a class="nav-item nav-link" href="{% url 'logout' %}">Wyloguj się</a> {% else %}
-                                            <a class="nav-item nav-link" href="{% url 'login' %}">Zaloguj się</a>
-                                            <a class="nav-item nav-link" href="{% url 'register' %}">Zarejestruj się</a>{% endif %}               
-                                        </div>
-                                    </div>
-                            </div>
-                        </div>
+</head>
+<body>
+  <div class="container">
+    <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+                <a class="navbar-brand mr-4" href="{% url 'wypozyczalnia-home' %}">Wypozyczalnia aut</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+                <div class="collapse navbar-collapse" id="navbarToggle">
+                    <div class="navbar-nav mr-auto">                                                       
                     </div>
-                </nav>
-                <div class="pozycja">
-                    {% block content %}{% endblock %}
-                </div>
-            </header>
+                    <!-- Navbar Right Side -->
+                    <div class="navbar-nav">
+                      <div class="dropdown">
+                          <button onclick="myCars()" class="dropbtn">Samochody</button>
+                          <div id="myDropdownCars" class="dropdown-content">
+                              <a class="nav-item nav-link" href="{% url 'wypozyczalnia-home' %}">Oferty</a> {%if request.user.is_staff %}
+                              <a class="nav-item nav-link" href="{% url 'newCar' %}">Dodaj samochód</a>
+                              <a class="nav-item nav-link" href= "{% url 'addSegment' %}">Dodaj segment</a>{% endif %}                                
+                          </div>
+                        </div>{%if request.user.is_manager %}
+                      <div class="dropdown">
+                          <button onclick="myEmployess()" class="dropbtn">Pracownicy</button>
+                          <div id="myDropdownEmployess" class="dropdown-content">
+                              <a class="nav-item nav-link" href="{% url 'registerEmployee' %}">Stwórz pracownika</a>
+                          </div>
+                        </div>{% endif %}
+                        <div class="dropdown">
+                          <button onclick="myArticle()" class="dropbtn">Artykuły</button>
+                          <div id="myDropdownArticle" class="dropdown-content">{%if request.user.is_staff %}
+                              <a class="nav-item nav-link" href="{% url 'addArticle' %}">Dodaj Artykul</a>{% endif %} 
+                              <a class="nav-item nav-link" href="{% url 'artykuly_widok' %}">Artykuły</a>
+                          </div>
+                        </div>
+                        {%if request.user.is_staff %}
+                        <div class="dropdown">
+                          <button onclick="myReservations()" class="dropbtn">Rezerwacje</button>
+                          <div id="myDropdownReservations" class="dropdown-content">
+                              <a class="nav-item nav-link" href="{% url 'rezerwacja_widok' %}">Spis rezerwacji</a>
+                          </div>
+                        </div>  {% endif %}
+                        <div class="dropdown">
+                          <button onclick="myAccount()" class="dropbtn">Konto</button>
+                              <div id="myDropdownAccount" class="dropdown-content">
+                                {% if user.is_authenticated %}
+                                  <a class="nav-item nav-link" href="{% url 'edit_account_redirect' %}">Edytuj profil</a>
+                                  <a class="nav-item nav-link" href="{% url 'logout' %}">Wyloguj się</a> {% else %}
+                                  <a class="nav-item nav-link" href="{% url 'login' %}">Zaloguj się</a>
+                                  <a class="nav-item nav-link" href="{% url 'register' %}">Zarejestruj się</a>{% endif %}               
+                              </div>
+                          </div>
+                  </div>
+      </nav>
+    </header>
+     <div class="pozycja">
+        {% block content %}{% endblock %}
+      </div> 
+  </div>
 
-            <script>
-                /* When the user clicks on the button, 
-                toggle between hiding and showing the dropdown content */
-                function myCars() {
-                  document.getElementById("myDropdownCars").classList.toggle("show");
-                }
-                function myProfile() {
-                  document.getElementById("myDropdownProfile").classList.toggle("show");
-                }
-                function myAccount() {
-                  document.getElementById("myDropdownAccount").classList.toggle("show");
-                }
-                function myEmployess() {
-                  document.getElementById("myDropdownEmployess").classList.toggle("show");
-                }
-                function myArticle() {
-                  document.getElementById("myDropdownArticle").classList.toggle("show");
-                }
-                function myReservations() {
-                  document.getElementById("myDropdownReservations").classList.toggle("show");
-                }
-                
-                // Close the dropdown if the user clicks outside of it
-                window.onclick = function(event) {
-                  if (!event.target.matches('.dropbtn')) {
-                    var dropdowns = document.getElementsByClassName("dropdown-content");
-                    var i;
-                    for (i = 0; i < dropdowns.length; i++) {
-                      var openDropdown = dropdowns[i];
-                      if (openDropdown.classList.contains('show')) {
-                        openDropdown.classList.remove('show');
-                      }
-                    }
-                  }
-                }
-                </script>
+  <script>
+      function myCars() {
+        document.getElementById("myDropdownCars").classList.toggle("show");
+      }
+      function myProfile() {
+        document.getElementById("myDropdownProfile").classList.toggle("show");
+      }
+      function myAccount() {
+        document.getElementById("myDropdownAccount").classList.toggle("show");
+      }
+      function myEmployess() {
+        document.getElementById("myDropdownEmployess").classList.toggle("show");
+      }
+      function myArticle() {
+        document.getElementById("myDropdownArticle").classList.toggle("show");
+      }
+      function myReservations() {
+        document.getElementById("myDropdownReservations").classList.toggle("show");
+      }
+      
 
-            <!-- Optional JavaScript -->
-            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        </body>
+      window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+          var dropdowns = document.getElementsByClassName("dropdown-content");
+          var i;
+          for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+              openDropdown.classList.remove('show');
+            }
+          }
+        }
+      }
+  </script>
 
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
 </html>

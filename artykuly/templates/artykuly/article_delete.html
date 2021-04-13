@@ -1,12 +1,20 @@
 {%extends 'wypozyczalnia/base.html'%}
 {% load crispy_forms_tags %}
 {% block content %}
-<div class="content-section">
-    <form method="POST" class="post-form" id="form1" enctype="multipart/form-data">
-        {% csrf_token %}
-        <edit>Czy jesteś pewny, że chesz usunąć ten artykuł ?</edit>
-        {{ form|crispy }}
-       <button type="submit" name="delete" class="btn btn-danger">Usuń</button>
-    </form>
+<div class="container">
+    <div class="row">
+        <div class="col-xl-10 col-lg-10 col-md-8 col-sm-6 col-md-5 col-md-4">
+            <figure>
+                <div class="content-section">
+                    <form method="POST" class="post-form" id="form1" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <edit>Czy jesteś pewny, że chesz usunąć ten artykuł ?</edit>
+                        {{ form|crispy }}
+                       <button type="submit" name="delete" class="btn btn-danger">Usuń</button>
+                    </form>
+                </div>      
+            </figure>        
+        </div>   
+    </div>
 </div>
 {%endblock content%}

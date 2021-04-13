@@ -1,12 +1,21 @@
 {%extends 'wypozyczalnia/base.html'%}
 {% load crispy_forms_tags %}
 {% block content %}
-<div class="content-section">
-    <h2>Utwórz rezerwację</h2>
-    <form method="POST" class="post-form" id="form1" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form|crispy }}
-        <button type="submit" class="save btn btn-default">Zapisz</button>
-    </form>
+<div class="container">
+    <div class="row">
+        <div class="col-xl-10 col-lg-10 col-md-8 col-sm-6 col-md-5 col-md-4">
+            <figure>
+                <div class="content-section">
+                    <h2>Utwórz rezerwację</h2>
+                    <form method="POST" class="post-form" id="form1" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <button type="submit" class="save btn btn-default">Zapisz</button>
+                    </form>
+                </div>     
+            </figure>        
+        </div>   
+    </div>
 </div>
+
 {%endblock content%}

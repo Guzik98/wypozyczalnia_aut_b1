@@ -1,27 +1,28 @@
 {%extends 'wypozyczalnia/base.html'%}
 {% block content %}
 {% for car in cars %}
-<div class="kontener">
-    <a href ="{% url 'car_detail' pk=car.pk %}"><img src = "{{ car.zdjecie.url }}" class="imagesize" alt="Responsive image" width="693" height="400"></a> 
-</div>
-<div class="polaroid">
-    <div class="container2">
-    <p>
-        <div class="desc">
-            <h2>Nazwa: {{ car.nazwa }}</h2>
-            <h3><b>Model: {{ car.model}}</b></h3>
-            <h4><b>Segment: {{ car.segment}}</b></h4>
-            <div class="text">
-                <p class = "text-justify"> Silnik: {{ car.silnik.name }} </p>
-                <br>
-                <p class = "text-justify"> Rok produkcji: {{ car.rok_produkcji }} </p>
-                <br>
-                <p class = "text-justify"> Cena za godzinę: {{ car.cena_za_godzine }} </p>
-                <br>
-                <p class = "text-justify"> Dostępność pojazdu: {{ car.getDostepnosc }} </p>
-            </div>
-        </div>
-    </p>
+<div class="container">
+    <div class="row">
+        <div class="col-xl-10 col-lg-10 col-sm-6 col-md-8 col-md-4">
+            <figure>
+                <div class="polaroid">
+                    <a href ="{% url 'car_detail' pk=car.pk %}"><img src = "{{ car.zdjecie.url }}" class="img-fluid"></a>                            
+                        <div class="text">
+                            <h2>Nazwa: {{ car.nazwa }}</h2>
+                            <h3><b>Model: {{ car.model}}</b></h3>
+                            <h4><b>Segment: {{ car.segment}}</b></h4>
+                            <hr>
+                            <p class = "text-justify"> Silnik: {{ car.silnik.name }} </p>
+                            <br>
+                            <p class = "text-justify"> Rok produkcji: {{ car.rok_produkcji }} </p>
+                            <br>
+                            <p class = "text-justify"> Cena za godzinę: {{ car.cena_za_godzine }} </p>
+                            <br>
+                            <p class = "text-justify"> Dostępność pojazdu: {{ car.getDostepnosc }} </p>
+                        </div>
+                </div>          
+            </figure>        
+        </div>   
     </div>
 </div>
 {% endfor %}

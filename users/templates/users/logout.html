@@ -1,12 +1,19 @@
 {%extends 'wypozyczalnia/base.html'%}
 {% block content %}
-    <div  class="content-section">
-    <h2>Zostałeś wylogowany</h2>
-    <div class ="border-top pt-3">
-        <small class="test-muted">
-                <a href="{% url 'login' %}">Zaloguj się ponownie</a>
-            </small>
-        </div>
+<div class="container">
+    <div class="row">
+        <div class="col-xl-10 col-lg-10 col-md-8 col-sm-6 col-md-5 col-md-4">
+            <figure>
+                <div  class="content-section">
+                    <h2>Zostałeś wylogowany</h2>
+                    <div class ="border-top pt-3">
+                        <small class="test-muted">
+                                <a href="{% url 'login' %}">Zaloguj się ponownie</a>
+                            </small>
+                        </div>
+                    </div>  
+            </figure>        
+        </div>   
     </div>
-
+</div>
 {% endblock %}

@@ -1,16 +1,25 @@
 {%extends 'wypozyczalnia/base.html'%}
 {% load crispy_forms_tags %}
 {% block content %}
-<div class="content-section">
-	<form method="POST">
-		{% csrf_token %}
-        <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Edytuj profil</legend>
-            {{ edit_form|crispy }}
-        </fieldset>
-		<div class="form-group">	
-			<button class="btn btn-default" type="submit">Zaktualizuj</button>
-		</div>
-	</form>
+<div class="container">
+    <div class="row">
+        <div class="col-xl-10 col-lg-10 col-md-8 col-sm-6 col-md-5 col-md-4">
+            <figure>
+				<div class="content-section">
+					<form method="POST">
+						{% csrf_token %}
+						<fieldset class="form-group">
+							<legend class="border-bottom mb-4">Edytuj profil</legend>
+							{{ edit_form|crispy }}
+						</fieldset>
+						<div class="form-group">	
+							<button class="btn btn-default" type="submit">Zaktualizuj</button>
+						</div>
+					</form>
+				</div>
+            </figure>        
+        </div>   
+    </div>
 </div>
+
 {% endblock %}

@@ -1,45 +1,51 @@
 {%extends 'wypozyczalnia/base.html'%}
 {% block content %}
-<div class="content-section">
-    <div class="contentArticle clearfix">
-        <div class="main-content">
-            <h1 class="recent-post-title">{{ article.title }}</h1>
-    
-            <div class="post">
-                <div>
-                    <a href ="{% url 'article_detail' pk=article.pk %}"><img src = "{{ article.zdjecie.url }}" class="post-image" width="50%" height="100%"></a>  
-                </div>
-                <div class="post-preview-detail">
-                    <div class="editArticle">
-                        <div>
-                            <i class="my_text">
-                                Data publikacji: {{ article.published_date}}
-                            </i>
+<div class="container">
+    <div class="row">
+        <div class="col-xl-10 col-lg-10 col-md-8 col-sm-6 col-md-5 col-md-4">
+            <figure>
+                <div class="content-section">
+                    <div class="contentArticle clearfix">
+                        <div class="main-content">
+                            <h1 class="recent-post-title">{{ article.title }}</h1>
+                    
+                            <div class="post">
+                                <img src = "{{ article.zdjecie.url }}" class="post-image" width="50%" height="100%">  
+                                <div class="post-preview-detail">
+                                    <div class="editArticle">
+                                        <div>
+                                            <i class="my_text">
+                                                Data publikacji: {{ article.published_date}}
+                                            </i>
+                                        </div>
+                                        <div>
+                                            <i class="my_text">
+                                                Autor: {{ article.author}}
+                                            </i>
+                                        </div>
+                                    </div>                                              
+                                    &nbsp;
+                                    <div>
+                                        <p class="article-text">
+                                            <i class="my_text">
+                                                {{ article.text}}
+                                            </i>
+                                        </p>
+                                    </div>                      
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <i class="my_text">
-                                Autor: {{ article.author}}
-                            </i>
+                        <hr>
+                    </div>
+                        <div class="article_edit_BTN">
+                            {%if request.user.is_staff %}
+                            <button  class="btn btn-submit"><a href ="{% url 'article_edit' pk=article.pk%}">Edytuj</a></button>
+                            <button  class="btn btn-danger"><a href ="{% url 'article_delete' pk=article.pk%}">Usuń</a></button>
+                            {% endif %}
                         </div>
-                    </div>                                              
-                    &nbsp;
-                    <div>
-                        <p class="article-text">
-                            <i class="my_text">
-                                {{ article.text}}
-                            </i>
-                        </p>
-                    </div>                      
-                </div>
-            </div>
-        </div>
-        <hr>
+                </div>    
+            </figure>        
+        </div>   
     </div>
-        <div class="article_edit_BTN">
-            {%if request.user.is_staff %}
-            <button  class="btn btn-submit"><a href ="{% url 'article_edit' pk=article.pk%}">Edytuj</a></button>
-            <button  class="btn btn-danger"><a href ="{% url 'article_delete' pk=article.pk%}">Usuń</a></button>
-            {% endif %}
-        </div>
 </div>
 {%endblock content%}
