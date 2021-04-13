@@ -1,8 +1,19 @@
 {%extends 'wypozyczalnia/base.html'%}
 {% block content %}
-{% for rezerwacja in rezerwacje %}
+
+
+
 <div class="container">
     <div class="row">
+        <form method="GET" action="." >
+            <label for="data1">Data odbioru</label>
+            <input type="date" id="data_odbioru_html" name="data_odbioru_html">
+            <label for="data2">Data zwrotu</label>
+            <input type="date" id="data_zwrotu_html" name="data_zwrotu_html">
+            <button type="submit" class="btn btn-primary">Filtruj</button>
+            <button type="reset" class="btn btn-primary">Wyczyść</button>
+        </form>
+        {% for rezerwacja in rezerwacje %}
         <div class="col-xl-10 col-lg-10 col-md-8 col-sm-6 col-md-5 col-md-4">
             <figure>
                 <div class="polaroid3">
