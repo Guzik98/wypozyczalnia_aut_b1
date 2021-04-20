@@ -8,8 +8,8 @@
             <label for="data2">Data zwrotu</label>
             <input type="date" id="data_zwrotu_html" name="data_zwrotu_html">
             <button type="submit" class="btn btn-primary">Filtruj</button>
-            <button type="reset" class="btn btn-primary">Wyczyść</button>
         </form>
+        <button class="btn btn-primary"><a style="color: white;" href="{% url 'rezerwacja_widok' %}">Wyczyść</a></button>
         {% for rezerwacja in rezerwacje %}
         <div class="col-xs-6 col-md-10">       
             <figure>
