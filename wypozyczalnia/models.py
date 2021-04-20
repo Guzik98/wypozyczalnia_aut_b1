@@ -68,6 +68,23 @@ class Segment(models.Model):
     def __str__(self):
         return self.name
 
+class Rating(models.Model):
+    ocena = models.FloatField(default= 0)
+    komentarz = models.TextField(blank = True)
+    osoba_oceniajaca = models.ForeignKey('users.Account', on_delete=models.CASCADE)
+    auto_oceniane = models.ForeignKey('wypozyczalnia.Car', on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name_plural = 'ocena'
+
+    def publish(self):
+        self.save()
+
+    def __str__(self):
+        return f'{self.ocena} {self.komentarz}'
+
+
+
 
 class Car(models.Model):
     nazwa = models.CharField(max_length=20)
@@ -78,10 +95,11 @@ class Car(models.Model):
     dostepnosc = models.BooleanField(default=True)
     klimatyzacja = models.BooleanField(default=True)
     ilosc_drzwi = models.IntegerField()
-    ocena = models.FloatField(default=0)
     silnik = models.ForeignKey(Engine, on_delete=models.CASCADE, related_name='cars', null=True)
     opcjonalne_wyposazenie = models.ManyToManyField(AditionalEquipment, related_name='cars')
     zdjecie = models.ImageField(upload_to='cars/%Y/%m/%d', default='no_image.png')
+    
+
     class Meta:
         db_table = 'car'
         ordering = ('model',)
@@ -102,5 +120,5 @@ class Car(models.Model):
         return 'Dostępny' if self.dostepnosc else 'Niedostępny'
 
     def __str__(self):
-        return f'{self.model.name} {self.nazwa} {self.segment.name} {self.rok_produkcji} {self.cena_za_godzine} {self.ilosc_drzwi} {self.ocena} {self.model} {self.silnik} '
+        return f'{self.model.name} {self.nazwa} {self.segment.name} {self.rok_produkcji} {self.cena_za_godzine} {self.ilosc_drzwi} {self.silnik}'
 

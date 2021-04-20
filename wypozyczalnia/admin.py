@@ -16,6 +16,9 @@ class EngineAdmin(admin.ModelAdmin):
     search_fields = ('name',)
     list_filter = ('name', 'consumation')
 
+@admin.register(models.Rating)
+class ModelAdmin(admin.ModelAdmin):
+    list_display = ('ocena','komentarz', 'osoba_oceniajaca', 'auto_oceniane')
 
 @admin.register(models.AditionalEquipment)
 class ModelAdmin(admin.ModelAdmin):
@@ -30,10 +33,10 @@ class ModelAdmin(admin.ModelAdmin):
 
 @admin.register(models.Car)
 class CarAdmin(admin.ModelAdmin):
-    list_display = ('nazwa', 'model', 'rok_produkcji', 'silnik', 'cena_za_godzine', 'dostepnosc', 'ocena','klimatyzacja','ilosc_drzwi','segment')
+    list_display = ('nazwa', 'model', 'rok_produkcji', 'silnik', 'cena_za_godzine', 'dostepnosc','klimatyzacja','ilosc_drzwi','segment')
     search_fields = ('nazwa',)
     list_editable = ('cena_za_godzine', 'dostepnosc')
-    list_filter = ('dostepnosc', 'ocena')
+    list_filter = ('dostepnosc',)
     list_select_related = ('model', 'silnik')
 
 

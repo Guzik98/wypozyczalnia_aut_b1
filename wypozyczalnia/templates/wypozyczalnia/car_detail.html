@@ -19,14 +19,17 @@
                             <p class = "text-justify"> Cena za godzinę: {{ car.cena_za_godzine }} </p>
                             <p class = "text-justify"> Dostępność pojazdu: {{ car.getDostepnosc }} </p>
                             <p class = "text-justify"> Klimatyzacja: {{ car.getKlimatyzacja }}</p>
-                            <p class = "text-justify"> Ocena: {{ car.ocena }} </p>
                             <p class = "text-justify"> Ilość drzwi: {{ car.ilosc_drzwi }} </p>
                             <p class = "text-justify"> Wyposażenie dodatkowe: {{ car.get_opcjonalne_wyposazenie }} </p>
                         </div>
                     </div>
                 <div>
+                    {% if user.is_authenticated %}
+                    <button  class="btn btn-submit"><a href ="{% url 'car_rating' pk=car.pk%}">Oceń auto</a></button>
+                    {% endif %}
                     {% if user.is_authenticated and car.dostepnosc %}
                     <button  class="btn btn-submit"><a href ="{% url 'rezerwacja' pk=car.pk%}">Rezerwuj</a></button>
+                    
                     {% endif %}
                         {%if request.user.is_staff %}
                         <button  class="btn btn-submit"><a href ="{% url 'car_edit' pk=car.pk%}">Edytuj</a></button>
