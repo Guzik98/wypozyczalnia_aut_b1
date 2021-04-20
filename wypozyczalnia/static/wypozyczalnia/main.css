@@ -109,13 +109,8 @@ a.article-title:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
 
-  div.polaroid3 {
-    width: 50%;
-    height: 450px;
-    float: left;
-    background-color: white;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    margin-bottom: 25px;
+.polaroidArticle {
+    background-color:rgb(136, 170, 233);
   }
 div.kontener {
     float:  left;

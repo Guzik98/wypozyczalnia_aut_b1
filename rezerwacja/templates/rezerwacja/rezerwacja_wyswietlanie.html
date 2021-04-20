@@ -1,8 +1,5 @@
 {%extends 'wypozyczalnia/base.html'%}
 {% block content %}
-
-
-
 <div class="container">
     <div class="row">
         <form method="GET" action="." >
@@ -14,27 +11,25 @@
             <button type="reset" class="btn btn-primary">Wyczyść</button>
         </form>
         {% for rezerwacja in rezerwacje %}
-        <div class="col-xl-10 col-lg-10 col-md-8 col-sm-6 col-md-5 col-md-4">
+        <div class="col-xs-6 col-md-10">       
             <figure>
-                <div class="polaroid3">
-                    <div class="container2">
-                        <div class="desc">        
-                            <div class="text">
-                                <p class = "text-justify"> Osoba wypozyczajaca: {{ rezerwacja.osoba_wypozyczajaca }} </p>
-                                <br>
-                                <hr>
-                                <p class = "text-justify"> Wypożyczane auto: {{ rezerwacja.auto_wypozyczane }} </p>
-                                <br>
-                                <p class = "text-justify"> Data odbioru: {{ rezerwacja.data_odbioru }} </p>
-                                <br>
-                                <p class = "text-justify"> Miejsce odbioru: {{ rezerwacja.miejsce_odbioru }} </p>
-                                <br>
-                                <p class = "text-justify"> Data zwrotu: {{ rezerwacja.data_zwrotu }} </p>
-                                <br>
-                                <p class = "text-justify"> Miejsce zwrotu: {{ rezerwacja.miejsce_zwrotu }} </p>
-                                <br>
-                                <p class = "text-justify"> Godzina zwrotu: {{ rezerwacja.godzina_zwrotu }} </p> 
-                            </div>
+                <div class="polaroid">
+                    <div class="text">        
+                        <div class="desc">
+                            <p class = "text-justify"> Osoba wypozyczajaca: {{ rezerwacja.osoba_wypozyczajaca }} </p>
+                            <br>
+                            <hr>
+                            <p class = "text-justify"> Wypożyczone auto: {{ rezerwacja.auto_wypozyczane }} </p>
+                            <br>
+                            <p class = "text-justify"> Data odbioru: {{ rezerwacja.data_odbioru }} </p>
+                            <br>
+                            <p class = "text-justify"> Miejsce odbioru: {{ rezerwacja.miejsce_odbioru }} </p>
+                            <br>
+                            <p class = "text-justify"> Data zwrotu: {{ rezerwacja.data_zwrotu }} </p>
+                            <br>
+                            <p class = "text-justify"> Miejsce zwrotu: {{ rezerwacja.miejsce_zwrotu }} </p>
+                            <br>
+                            <p class = "text-justify"> Godzina zwrotu: {{ rezerwacja.godzina_zwrotu }} </p> 
                         </div>
                     </div>
                 </div>    
