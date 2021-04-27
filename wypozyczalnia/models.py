@@ -68,23 +68,6 @@ class Segment(models.Model):
     def __str__(self):
         return self.name
 
-class Rating(models.Model):
-    ocena = models.FloatField(default= 0)
-    komentarz = models.TextField(blank = True)
-    osoba_oceniajaca = models.ForeignKey('users.Account', on_delete=models.CASCADE)
-    auto_oceniane = models.ForeignKey('wypozyczalnia.Car', on_delete=models.CASCADE)
-
-    class Meta:
-        verbose_name_plural = 'ocena'
-
-    def publish(self):
-        self.save()
-
-    def __str__(self):
-        return f'{self.ocena} {self.komentarz}'
-
-
-
 
 class Car(models.Model):
     nazwa = models.CharField(max_length=20)
@@ -121,4 +104,29 @@ class Car(models.Model):
 
     def __str__(self):
         return f'{self.model.name} {self.nazwa} {self.segment.name} {self.rok_produkcji} {self.cena_za_godzine} {self.ilosc_drzwi} {self.silnik}'
+
+RATE_CHOICES = [
+	(0,0),
+	(1,1),
+	(2,2),
+	(3,3),
+	(4,4),
+	(5,5),
+]
+
+class Rating(models.Model):
+    user = models.ForeignKey('users.Account', on_delete=models.CASCADE)
+    car= models.ForeignKey('wypozyczalnia.Car', on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True)
+    rate = models.PositiveSmallIntegerField(choices=RATE_CHOICES)
+    text = models.TextField(blank = True)
+
+    class Meta:
+        verbose_name_plural = 'ocena'
+
+    def publish(self):
+        self.save()
+
+    def __str__(self):
+        return self.user.username
 

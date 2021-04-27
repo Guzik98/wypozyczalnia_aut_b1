@@ -6,7 +6,7 @@
         <div class="col-xs-6 col-md-10">
             <figure>
                 <div class="polaroid">
-                    <a href ="{% url 'car_detail' pk=car.pk %}"><img src = "{{ car.zdjecie.url }}" class="img-fluid"></a>                            
+                    <a href ="{% url 'car_detail' pk=car.pk %}"><img src = "{{ car.zdjecie.url }}" class="img-fluid" alt="Responsive image" width="803px" height="255px"></a>                           
                         <div class="text">
                             <h2>Nazwa: {{ car.nazwa }}</h2>
                             <h3><b>Model: {{ car.model}}</b></h3>

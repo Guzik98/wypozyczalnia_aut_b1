@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import Car, AditionalEquipment, Model, Engine, FuelType
-from .forms import CarForm, SegmentForm, RatingForm
+from .models import Car, AditionalEquipment, Model, Engine, FuelType, Rating
+from .forms import CarForm, SegmentForm, RateForm
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
@@ -28,24 +28,8 @@ def addcar(request):
 
 def car_detail(request, pk):
     car = get_object_or_404(Car, pk=pk)
-    return render(request, 'wypozyczalnia/car_detail.html', {'car': car})
-
-
-def car_rating(request, pk):
-    car = get_object_or_404(Car, pk=pk)
-    if request.method == 'POST':
-        form = RatingForm(request.POST)
-        if form.is_valid():
-            rating = form.save(commit=False)
-            rating.osoba_oceniajaca = request.user
-            rating.auto_oceniane = car
-            form.save()
-            return redirect('wypozyczalnia-home')
-        else:
-            print(form.errors)
-    else:
-        form = RatingForm()
-    return render(request, 'wypozyczalnia/car_rating.html',{'form':form})
+    rate = Rating.objects.all()
+    return render(request, 'wypozyczalnia/car_detail.html', {'car': car, 'rate': rate})
 
 
 @user_passes_test(lambda u: u.is_staff)
@@ -88,5 +72,21 @@ def addsegment(request):
         form = SegmentForm()
     return render(request, 'wypozyczalnia/addSegment.html',{'form':form})
 
+@login_required
+def Rate(request, pk):
+    car = get_object_or_404(Car, pk=pk)
+    user = request.user
+    if request.method == 'POST':
+        form = RateForm(request.POST)
+        if form.is_valid():
+            rate = form.save(commit=False)
+            rate.user = user
+            rate.car = car
+            rate.save()
+            return redirect('car_detail', pk)
+        else:
+            print(form.errors)
+    else:
+        form = RateForm()
+    return render(request, 'wypozyczalnia/car_rating.html',{'form':form})
 
-    

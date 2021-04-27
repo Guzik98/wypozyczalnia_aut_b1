@@ -16,10 +16,6 @@ class EngineAdmin(admin.ModelAdmin):
     search_fields = ('name',)
     list_filter = ('name', 'consumation')
 
-@admin.register(models.Rating)
-class ModelAdmin(admin.ModelAdmin):
-    list_display = ('ocena','komentarz', 'osoba_oceniajaca', 'auto_oceniane')
-
 @admin.register(models.AditionalEquipment)
 class ModelAdmin(admin.ModelAdmin):
     list_display = ('name',)
@@ -46,12 +42,8 @@ class CarAdmin(admin.ModelAdmin):
     def engine(self, obj):
         return obj.engine
 
-"""
-@admin.register(models.Gallery)
-class GalleryAdmin(admin.ModelAdmin):
-    list_display = ('photo', 'car')
-    list_select_related = ('car',)
 
-    def car(self, obj):
-        return obj.car
-"""
+@admin.register(models.Rating)
+class RateAdmin(admin.ModelAdmin):
+    list_display = ('user', 'car', 'date', 'rate','text') 
+    search_fields = ('user',)

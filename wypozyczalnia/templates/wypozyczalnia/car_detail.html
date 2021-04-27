@@ -5,7 +5,7 @@
         <div class="col-xs-6 col-md-10">
             <figure>
                     <div class="polaroid">
-                        <img src = "{{ car.zdjecie.url }}" class="img-fluid">                      
+                        <img src = "{{ car.zdjecie.url }}" class="img-fluid" alt="Responsive image" width="803px" height="255px">                     
                         <div class="text">
                             <h2> {{ car.nazwa }}</h2>
                             <h3><b>{{ car.model}}</b></h3>
@@ -25,7 +25,7 @@
                     </div>
                 <div>
                     {% if user.is_authenticated %}
-                    <button  class="btn btn-submit"><a href ="{% url 'car_rating' pk=car.pk%}">Oceń auto</a></button>
+                    <button  class="btn btn-submit"><a href ="{% url 'car_rate' pk=car.pk%}">Oceń auto</a></button>
                     {% endif %}
                     {% if user.is_authenticated and car.dostepnosc %}
                     <button  class="btn btn-submit"><a href ="{% url 'rezerwacja' pk=car.pk%}">Rezerwuj</a></button>
@@ -35,8 +35,19 @@
                         <button  class="btn btn-submit"><a href ="{% url 'car_edit' pk=car.pk%}">Edytuj</a></button>
                         <button  class="btn btn-danger"><a href ="{% url 'car_delete' pk=car.pk%}">Usuń</a></button>
                         {% endif %}
-
-                </div>       
+                </div>  
+                    <center><h2>Opinie</h2></center>
+                    {% for rate in rate %}
+                    <div class="polaroid">
+                        {% ifequal car.pk rate.car.pk  %}
+                        <p class = "text-justify"> Użytkownik:  {{ rate.user }} </p>
+                        <p class = "text-justify"> Ocena: {{ rate.rate }} </p>
+                        <p class = "text-justify"> Komentarz: {{ rate.text }} </p>
+                        <p class = "text-justify"> Data: {{ rate.date }} </p>
+                        {% endifequal %}
+                    </div>
+                    {% endfor %}
+    
             </figure>        
         </div>   
     </div>
