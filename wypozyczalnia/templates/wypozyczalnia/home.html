@@ -1,5 +1,20 @@
 {%extends 'wypozyczalnia/base.html'%}
 {% block content %}
+
+
+<div class="formRight">
+    <h4 style = 'color: white'>Filtrowanie po segmencie</h4>
+    <form method='GET' action=''>
+            <select class="form-control" id="selected_segment" name='selected_segment' style="width:160px;">
+                {% for segment in segment %}
+                    <option value='{{segment.id}}'>{{ segment.name }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit" class="btn btn-primary">Filtruj</button>
+            <button class="btn btn-primary"><a style="color: white;" href="{% url 'wypozyczalnia-home' %}">Wyczyść</a></button>
+    </form>
+</div>
+
 {% for car in cars %}
 <div class="container">
     <div class="row">
@@ -15,7 +30,6 @@
                             <p class = "text-justify"> Silnik: {{ car.silnik.name }} </p>
                             <br>
                             <p class = "text-justify"> Rok produkcji: {{ car.rok_produkcji }} </p>
-                            <br>
                             <p class = "text-justify"> Cena za godzinę: {{ car.cena_za_godzine }} </p>
                             <br>
                             <p class = "text-justify"> Dostępność pojazdu: {{ car.getDostepnosc }} </p>

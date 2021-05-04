@@ -2,7 +2,7 @@ body {
     background: rgb(136, 170, 233);
     color: #333333;
     margin-top: 5rem;
-    margin:25px;
+    margin: 25px;
 }
 
 h1,
@@ -45,7 +45,7 @@ ul {
 }
 
 .article-text {
-    text-align:justify;
+    text-align: justify;
 }
 
 a.article-title:hover {
@@ -101,19 +101,20 @@ a.article-title:hover {
 #imagesize {
     height: auto;
     max-width: 100%;
-    display:block;
+    display: block;
 }
 
 .polaroid {
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  }
+}
 
 .polaroidArticle {
-    background-color:rgb(136, 170, 233);
-  }
+    background-color: rgb(136, 170, 233);
+}
+
 div.kontener {
-    float:  left;
+    float: left;
 }
 
 .text {
@@ -134,54 +135,60 @@ div.desc {
 }
 
 .dropbtn {
-background-color: #5f788a;
-color: rgb(255, 255, 255);
-padding: 16px;
-font-size: 16px;
-border: none;
-cursor: pointer;
+    background-color: #5f788a;
+    color: rgb(255, 255, 255);
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
 }
 
-.dropbtn:hover, .dropbtn:focus {
-background-color: #5f788a;
+.dropbtn:hover,
+.dropbtn:focus {
+    background-color: #5f788a;
 }
-  
+
 .dropdown {
-position: relative;
-display: inline-block;
+    position: relative;
+    display: inline-block;
 }
-  
+
 .dropdown-content {
-display: none;
-position: absolute;
-background-color: #5f788a;
-min-width: 160px;
-overflow: auto;
-box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-z-index: 1;
+    display: none;
+    position: absolute;
+    background-color: #5f788a;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
 }
 
 div.container2 {
     float: left;
     text-align: left;
     padding: 50px 20px;
-  }
-
-.dropdown-content a {
-color: rgb(0, 0, 0);
-padding: 12px 16px;
-text-decoration: none;
-display: block;
 }
 
-.dropdown a:hover {background-color: #31709c;}
+.dropdown-content a {
+    color: rgb(0, 0, 0);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
 
-.show {display: block;}
+.dropdown a:hover {
+    background-color: #31709c;
+}
+
+.show {
+    display: block;
+}
+
 
 /* Artykuł */
 
 .main-content {
-background-color: rgb(136, 170, 233);
+    background-color: rgb(136, 170, 233);
 }
 
 .clearfix::after {
@@ -192,32 +199,35 @@ background-color: rgb(136, 170, 233);
 
 .contentArticle {
     width: 90%;
-    margin: 30px auto 30px;;
+    margin: 30px auto 30px;
+    ;
 }
 
 .contentArticle .main-content {
     width: 70%;
-    float: left;;
+    float: left;
+    ;
 }
 
 .contentArticle .sidebar {
     width: 30%;
-    float: left;;
+    float: left;
+    ;
     height: 300px;
 }
 
 .recent-post-title {
-font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.recent-post-title .main-content{
+.recent-post-title .main-content {
     margin: 20%;
 }
 
 .content .main-content .post {
     width: 95%;
     height: 270px;
-    margin:  20px auto;
+    margin: 20px auto;
     border-radius: 5px;
     background-color: white;
     position: relative;
@@ -230,23 +240,23 @@ font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 5px;
-
 }
 
 .post-preview-detail {
-margin-left: 50%;
+    margin-left: 50%;
 }
 
 .content .main-content .post .post-preview {
-width: 60%;
-padding: 10px;
-float: right;
+    width: 60%;
+    padding: 10px;
+    float: right;
 }
 
-.my_text{
-font-family:    Arial, Helvetica, sans-serif;
-font-size:      15px;
+.my_text {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
 }
+
 
 /* Edyzja artykuł */
 
@@ -261,5 +271,13 @@ edit {
 }
 
 .article_edit_BTN {
-    position:absolute; left: 50%;; 
+    position: absolute;
+    left: 50%;
+    ;
+}
+
+.formRight {
+    position: absolute;
+    right: 20px;
+    color: white;
 }

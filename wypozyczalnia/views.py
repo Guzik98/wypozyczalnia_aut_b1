@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Car, AditionalEquipment, Model, Engine, FuelType, Rating
+from .models import Car, AditionalEquipment, Model, Engine, FuelType, Rating, Segment
 from .forms import CarForm, SegmentForm, RateForm
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm
@@ -10,8 +10,12 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 
 
 def home(request):
+    selected_segment_html = request.GET.get('selected_segment')
     cars = Car.objects.all()
-    return render(request, 'wypozyczalnia/home.html', { 'cars':cars })
+    segment = Segment.objects.all()
+    if selected_segment_html != '' and selected_segment_html is not None:
+        cars = cars.filter(segment=selected_segment_html)
+    return render(request, 'wypozyczalnia/home.html', { 'cars':cars, 'segment': segment })
 
 @user_passes_test(lambda u: u.is_staff)
 def addcar(request):
@@ -89,4 +93,6 @@ def Rate(request, pk):
     else:
         form = RateForm()
     return render(request, 'wypozyczalnia/car_rating.html',{'form':form})
+
+
 
