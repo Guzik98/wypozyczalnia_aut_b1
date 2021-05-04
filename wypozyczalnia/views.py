@@ -28,7 +28,7 @@ def addcar(request):
 
 def car_detail(request, pk):
     car = get_object_or_404(Car, pk=pk)
-    rate = Rating.objects.all()
+    rate = Rating.objects.order_by('-date')
     return render(request, 'wypozyczalnia/car_detail.html', {'car': car, 'rate': rate})
 
 
