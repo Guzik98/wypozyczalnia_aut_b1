@@ -8,14 +8,21 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required, user_passes_test
 
 
+def int_or_0(value):
+    try:
+        return int(value)
+    except:
+        return 0
 
 def home(request):
     selected_segment_html = request.GET.get('selected_segment')
     cars = Car.objects.all()
-    segment = Segment.objects.all()
+    segments = Segment.objects.all()
     if selected_segment_html != '' and selected_segment_html is not None:
         cars = cars.filter(segment=selected_segment_html)
-    return render(request, 'wypozyczalnia/home.html', { 'cars':cars, 'segment': segment })
+    selected_segment_html_parse=int_or_0(selected_segment_html)
+    return render(request, 'wypozyczalnia/home.html', { 'cars':cars, 'segments': segments,'selected_segment_html_parse': selected_segment_html_parse})
+
 
 @user_passes_test(lambda u: u.is_staff)
 def addcar(request):

@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'rezerwacja.apps.RezerwacjaConfig',
     'artykuly',
+    'bootstrapform',
 ]
 
 MIDDLEWARE = [

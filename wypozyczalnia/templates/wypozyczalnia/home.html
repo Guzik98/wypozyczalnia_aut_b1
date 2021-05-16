@@ -5,9 +5,11 @@
 <div class="formRight">
     <h4 style = 'color: white'>Filtrowanie po segmencie</h4>
     <form method='GET' action=''>
-            <select class="form-control" id="selected_segment" name='selected_segment' style="width:160px;">
-                {% for segment in segment %}
-                    <option value='{{segment.id}}'>{{ segment.name }}</option>
+            <select class="form-control"  name='selected_segment' style="width:160px;">
+                <option value=""></option>
+                {% for segment in segments %}
+                    <option  value='{{segment.id}}'{%if segment.id == selected_segment_html_parse  %} selected {% endif %}>
+                    {{ segment }}</option>
                 {% endfor %}
             </select>
             <button type="submit" class="btn btn-primary">Filtruj</button>
