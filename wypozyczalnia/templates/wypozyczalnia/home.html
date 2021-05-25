@@ -1,26 +1,23 @@
 {%extends 'wypozyczalnia/base.html'%}
 {% block content %}
-
-
-<div class="formRight">
-    <h4 style = 'color: white'>Filtrowanie po segmencie</h4>
-    <form method='GET' action=''>
-            <select class="form-control"  name='selected_segment' style="width:160px;">
-                <option value=""></option>
-                {% for segment in segments %}
-                    <option  value='{{segment.id}}'{%if segment.id == selected_segment_html_parse  %} selected {% endif %}>
-                    {{ segment }}</option>
-                {% endfor %}
-            </select>
-            <button type="submit" class="btn btn-primary">Filtruj</button>
-            <button class="btn btn-primary"><a style="color: white;" href="{% url 'wypozyczalnia-home' %}">Wyczyść</a></button>
-    </form>
-</div>
-
-{% for car in cars %}
 <div class="container">
     <div class="row">
         <div class="col-xs-6 col-md-10">
+            <div class="formRight">
+                <p>Filtrowanie po segmencie</p>
+                <form method='GET' action=''>
+                    <select class="form-control"  name='selected_segment' style="width:160px;">
+                        <option value=""></option>
+                        {% for segment in segments %}
+                            <option  value='{{segment.id}}'{%if segment.id == selected_segment_html_parse  %} selected {% endif %}>
+                            {{ segment }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit" class="btn btn-primary">Filtruj</button>
+                    <button class="btn btn-primary"><a style="color: white;" href="{% url 'wypozyczalnia-home' %}">Wyczyść</a></button>
+            </form>
+            </div>
+            {% for car in cars %}
             <figure>
                 <div class="polaroid">
                     <a href ="{% url 'car_detail' pk=car.pk %}"><img src = "{{ car.zdjecie.url }}" class="img-fluid" alt="Responsive image" width="803px" height="255px"></a>                           
@@ -37,9 +34,10 @@
                             <p class = "text-justify"> Dostępność pojazdu: {{ car.getDostepnosc }} </p>
                         </div>
                 </div>          
-            </figure>        
+            </figure>  
+            {% endfor %}      
         </div>   
     </div>
 </div>
-{% endfor %}
+
 {%endblock content%}

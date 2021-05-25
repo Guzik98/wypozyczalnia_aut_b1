@@ -30,3 +30,4 @@ class RezerwacjaForm(forms.ModelForm):
             raise ValidationError('Nie możesz dokonać odbioru lub zwrotu wcześniej niż teraz')
         if data_odbioru == data_zwrotu and godzina_odbioru >= godzina_zwrotu :
             raise ValidationError('Nie możesz dokonać rezerwacji jeśli godzina zwrotu jest wcześniejsza lub równa niz godzina odbioru')
+

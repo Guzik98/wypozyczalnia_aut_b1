@@ -9,16 +9,16 @@ from django.utils import timezone
 
 @user_passes_test(lambda u: u.is_staff)
 def search(request):
-    data_odbioru_html = request.GET.get('data_odbioru_html')
-    data_zwrotu_html = request.GET.get('data_zwrotu_html')
+    data_odbioru_html_date = request.GET.get('data_odbioru_html')
+    data_zwrotu_html_date = request.GET.get('data_zwrotu_html')
     rezerwacje = Rezerwacja.objects.all()
-    if data_odbioru_html != '' and data_odbioru_html is not None:
-        rezerwacje = rezerwacje.filter(data_odbioru__lte=data_odbioru_html)
-        rezerwacje = rezerwacje.filter(data_odbioru__gte=data_odbioru_html)
-    if data_zwrotu_html != '' and data_zwrotu_html is not None:
-        rezerwacje = rezerwacje.filter(data_zwrotu__lte=data_zwrotu_html)
-        rezerwacje = rezerwacje.filter(data_zwrotu__gte=data_zwrotu_html)
-    return render(request, 'rezerwacja/rezerwacja_wyswietlanie.html', {'rezerwacje':rezerwacje})
+    if data_odbioru_html_date != '' and data_odbioru_html_date is not None:
+        rezerwacje = rezerwacje.filter(data_odbioru__lte=data_odbioru_html_date)
+        rezerwacje = rezerwacje.filter(data_odbioru__gte=data_odbioru_html_date)
+    if data_zwrotu_html_date != '' and data_zwrotu_html_date is not None:
+        rezerwacje = rezerwacje.filter(data_zwrotu__lte=data_zwrotu_html_date)
+        rezerwacje = rezerwacje.filter(data_zwrotu__gte=data_zwrotu_html_date)
+    return render(request, 'rezerwacja/rezerwacja_wyswietlanie.html', {'rezerwacje':rezerwacje, 'data_odbioru_html_date':data_odbioru_html_date, 'data_zwrotu_html_date':data_zwrotu_html_date})
 
 
 

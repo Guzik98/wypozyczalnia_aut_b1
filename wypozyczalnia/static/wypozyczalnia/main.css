@@ -276,8 +276,6 @@ edit {
     ;
 }
 
-.formRight {
-    position: absolute;
-    right: 20px;
-    color: white;
+.divsegment {
+    margin: 0 auto;
 }

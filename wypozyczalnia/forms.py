@@ -39,8 +39,9 @@ class SegmentForm(forms.ModelForm):
 
 
 def WalidacjaKomentarza(value):
-    if len(value)>150 or len(value)<10:
-         raise ValidationError('Upewnij się że zawiera od 10 do 150 znaków.')
+    if not (len(value)<50 and len(value)>10):
+        raise ValidationError('Upewnij się że zawiera od 10 do 50 znaków.')
+        
 
 class RateForm(forms.ModelForm):
     text = forms.CharField(validators = [WalidacjaKomentarza],widget=forms.Textarea(attrs={'class': 'materialize-textarea'}), label="komentarz")
