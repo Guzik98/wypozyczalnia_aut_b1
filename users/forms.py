@@ -82,11 +82,11 @@ class ManagerRegisterForm(UserCreationForm):
         model = Account
         fields = [ 'email', 'first_name','last_name', 'username','phone','is_staff','Data_waznosc_prawo_jazdy','Nr_dokumentu','password1', 'password2',]
 
-class UserUpdateForm(UserChangeForm):
+class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField()
     Data_waznosc_prawo_jazdy = forms.DateField(widget=DateInput(), validators=[not_past_days], label = 'Data ważności prawa jazdy' ) 
     Nr_dokumentu = forms.CharField(validators=[Nr_dokumentu_validacja], label = 'Numer dokumentu prawa jazdy')
-    phone = PhoneNumberField( label = 'Numer telefonu z numerem kierunkowym')
+    phone = PhoneNumberField(label='Numer telefonu z numerem kierunkowym')
     class Meta:
         model = Account
         labels = {
@@ -97,4 +97,5 @@ class UserUpdateForm(UserChangeForm):
             "Data_waznosc_prawo_jazdy": "Prawo jazdy ważne do",
             "Nr_dokumentu": "Numer indetyfikujący prawo jazdy",
         }
-        fields = [ 'email','first_name','last_name','phone', 'Data_waznosc_prawo_jazdy','Nr_dokumentu',]
+        fields = ['email', 'first_name', 'last_name',
+                  'phone', 'Data_waznosc_prawo_jazdy', 'Nr_dokumentu', ]
