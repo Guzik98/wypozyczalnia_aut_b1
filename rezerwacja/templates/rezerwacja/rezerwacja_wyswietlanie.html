@@ -4,10 +4,10 @@
     <div class="row">
             <form method="GET" action="." >
                 <label for="data1">Data odbioru</label>
-                <input type="date" id="data_odbioru_html" name="data_odbioru_html" value="{{data_odbioru_html_date}}">
+                <input type="date" name="data_odbioru" id="data_odbioru_html" name="data_odbioru_html" value="{{data_odbioru_html_date}}">
                 <label for="data2">Data zwrotu</label>
-                <input type="date" id="data_zwrotu_html" name="data_zwrotu_html" value="{{data_zwrotu_html_date}}">
-                <button type="submit" class="btn btn-primary">Filtruj</button>
+                <input type="date" name="data_zwrotu" id="data_zwrotu_html" name="data_zwrotu_html" value="{{data_zwrotu_html_date}}">
+                <button type="submit" name="filtruj" class="btn btn-primary">Filtruj</button>
             </form>
         <button class="btn btn-primary"><a style="color: white;" href="{% url 'rezerwacja_widok' %}">Wyczyść</a></button>
         {% for rezerwacja in rezerwacje %}

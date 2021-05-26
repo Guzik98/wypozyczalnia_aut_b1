@@ -1,18 +1,18 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
-from SeleniumLogin import login, setup_drivers
+from SeleniumLoginAdmin import login_admin, setup_drivers
 
 driver = setup_drivers()
-login(driver)
+login_admin(driver)
 driver.get("http://127.0.0.1:8000/wyswietlanieArtykulow/newArticle/")
 
 #Dane do wprowadzenia
 title_inputs = ["test", "", "adadadfsa", "testgdfsgfdsggg"]
-image_input = "./Selenium/image_test_article.jpg"
 content_inputs = ["Treść artykułu", "Treść artykułu", "Treść", "zaqwsxcde"]
-print("\nTesty Dodawania")
+test = ['T34', 'T35', 'T36', 'T37']
 for i in range(4):
+    print(f"\nTest  {test[i]}")
     #Pola do wprowadzania danych
     title_field = driver.find_element_by_name("title")
     content_field = driver.find_element_by_name("text")
@@ -29,20 +29,32 @@ for i in range(4):
 
     driver.get("http://127.0.0.1:8000/wyswietlanieArtykulow/newArticle/")
 
-print("\nTesty Edycji")
 too_long_title, too_long_input, almost_proper_title, proper_title, proper_input  = "", "", "Hello world!", "Mycie aut", "Testowa treść"
 for i in range(160):
     if i < 40:
         too_long_title+="a"
     too_long_input+="a"
 
+iterator = 0
 titles  = ["", almost_proper_title, almost_proper_title, proper_title]
 inputs = [too_long_input, too_long_input, too_long_input, proper_input]
-
-
+while True:
+    proper_url = f'http://127.0.0.1:8000/wyswietlanieArtykulow/article/{iterator}/edit'
+    print(f"\nSprawdzam link - ")
+    print(proper_url)
+    driver.get(proper_url)
+    try:
+        test = driver.find_element_by_name("title")
+        proper_url = f'http://127.0.0.1:8000/wyswietlanieArtykulow/article/{iterator}'
+        print('Dobry link')
+        break
+    except:
+        print('Zły link')
+        iterator += 1
+test = ['T39', 'T40', 'T41', 'T42']
 for i in range(4):
-    #Trzeba zmieniać index artykułu do edycji na bieżący artykuł (taki który istnieje)
-    driver.get("http://127.0.0.1:8000/wyswietlanieArtykulow/article/43/edit")
+    print(f"\nTest  {test[i]}")
+    driver.get(proper_url + "/edit")
     title_field = driver.find_element_by_name("title")
     content_field =  driver.find_element_by_name("text")
     submit_button = driver.find_element_by_name("edit")
@@ -55,12 +67,12 @@ for i in range(4):
     else:
         print("Test nieudany")
     #Trzeba zmieniać index artykułu do edycji na bieżący artykuł (taki który istnieje)
-    driver.get("http://127.0.0.1:8000/wyswietlanieArtykulow/article/43/edit")
+    driver.get(proper_url + "/edit")
 
 
-print("\nTest usuwania")
+print("\nTest T38")
 #Trzeba zmieniać index artykułu do usunięcia na bieżący artykuł (taki który istnieje)
-driver.get("http://127.0.0.1:8000/wyswietlanieArtykulow/article/43/delete")
+driver.get(proper_url + "/delete")
 submit_button = driver.find_element_by_name("delete")
 submit_button.send_keys(Keys.RETURN)
 if driver.current_url == "http://127.0.0.1:8000/wyswietlanieArtykulow/":
@@ -70,3 +82,4 @@ else:
 
 
 driver.get("http://127.0.0.1:8000/logout/")
+driver.quit()

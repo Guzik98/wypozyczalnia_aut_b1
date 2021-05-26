@@ -1,0 +1,2 @@
+Testy zostały zaprojektowane by wykonywać je w podanej kolejności, a przed każdą kolejną serią testów uruchomić plik
+0 - GetReadyForTests.py
